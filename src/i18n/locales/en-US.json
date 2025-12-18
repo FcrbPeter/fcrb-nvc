@@ -244,5 +244,10 @@
     "footer": {
         "title": "Why choose emotions?",
         "content": "In Nonviolent Communication (NVC), emotions are the signal lights to our inner 'needs'. When we feel comfortable (like happy, peaceful), it means needs are met; when uncomfortable (like angry, sad), needs are unmet. Identifying emotions accurately helps us clearly see what we truly value."
+    },
+    "legal": {
+        "disclaimer": "Disclaimer",
+        "privacy": "Privacy Policy",
+        "back": "Back"
     }
 }

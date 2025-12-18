@@ -6,10 +6,11 @@ import EmotionSelector from './components/EmotionSelector';
 import NeedSelector from './components/NeedSelector';
 import Summary from './components/Summary';
 import Stepper from './components/Stepper';
+import LegalViews from './components/LegalViews';
 
 function App() {
   const { t, i18n } = useTranslation();
-  const [currentView, setCurrentView] = useState('welcome'); // welcome, topic, emotions, needs, summary
+  const [currentView, setCurrentView] = useState('welcome'); // welcome, topic, emotions, needs, summary, disclaimer, privacy
   const [topic, setTopic] = useState('');
   const [emotions, setEmotions] = useState([]);
   const [needs, setNeeds] = useState([]);
@@ -70,7 +71,7 @@ function App() {
 
       {/* Main Card Container */}
       <main className="card-container">
-        {currentView !== 'welcome' && (
+        {currentView !== 'welcome' && currentView !== 'disclaimer' && currentView !== 'privacy' && (
           <Stepper currentStep={getStep()} />
         )}
 
@@ -104,9 +105,12 @@ function App() {
         {currentView === 'summary' && (
           <Summary topic={topic} emotions={emotions} needs={needs} onRestart={handleRestart} />
         )}
+
+        {(currentView === 'disclaimer' || currentView === 'privacy') && (
+          <LegalViews view={currentView} onBack={handleRestart} />
+        )}
       </main>
 
-      {/* Footer Info */}
       <div className="info-footer">
         <h4 style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
           <span style={{
@@ -119,6 +123,21 @@ function App() {
           {t('footer.content')}
         </p>
       </div>
+
+      {/* Real Footer */}
+      <footer className="app-footer">
+        <p style={{ marginBottom: '8px' }}>
+          <button onClick={() => setCurrentView('disclaimer')} style={{ marginRight: '16px', opacity: 0.8, fontSize: '0.8.5rem', textDecoration: 'underline' }}>
+            {t('legal.disclaimer')}
+          </button>
+          <button onClick={() => setCurrentView('privacy')} style={{ opacity: 0.8, fontSize: '0.8.5rem', textDecoration: 'underline' }}>
+            {t('legal.privacy')}
+          </button>
+        </p>
+        <p>
+          &copy; 2025 FcrbPeter
+        </p>
+      </footer>
     </div>
   );
 }

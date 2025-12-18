@@ -1,0 +1,248 @@
+{
+    "welcome": {
+        "title": "NVC Emotion Selector",
+        "subtitle": "Identify your feelings with Nonviolent Communication",
+        "steps_intro": "Clarify your inner desires in three simple steps.\nObservation → Feelings → Needs",
+        "start": "Start"
+    },
+    "topic": {
+        "question": "What is currently alive in you?",
+        "instruction": "Try to describe what happened without judgment.\n(e.g., 'I see socks on the table' instead of 'You always leave socks around')",
+        "placeholder": "Describe the situation...",
+        "next": "Next"
+    },
+    "emotions": {
+        "satisfied": "Needs Satisfied",
+        "unsatisfied": "Needs Not Satisfied",
+        "next": "Next",
+        "categories": {
+            "satisfied": [
+                {
+                    "id": "joy",
+                    "label": "Joyful",
+                    "words": [
+                        "Happy",
+                        "Excited",
+                        "Delighted",
+                        "Alive"
+                    ]
+                },
+                {
+                    "id": "peace",
+                    "label": "Peaceful",
+                    "words": [
+                        "Calm",
+                        "Relaxed",
+                        "Serene",
+                        "Secure"
+                    ]
+                },
+                {
+                    "id": "affection",
+                    "label": "Affectionate",
+                    "words": [
+                        "Loving",
+                        "Warm",
+                        "Compassionate",
+                        "Friendly"
+                    ]
+                },
+                {
+                    "id": "interest",
+                    "label": "Interested",
+                    "words": [
+                        "Curious",
+                        "Engaged",
+                        "Fascinated",
+                        "Inspired"
+                    ]
+                }
+            ],
+            "unsatisfied": [
+                {
+                    "id": "anger",
+                    "label": "Angry",
+                    "words": [
+                        "Frustrated",
+                        "Annoyed",
+                        "Irritated",
+                        "Furious"
+                    ]
+                },
+                {
+                    "id": "fear",
+                    "label": "Afraid",
+                    "words": [
+                        "Anxious",
+                        "Scared",
+                        "Worried",
+                        "Nervous"
+                    ]
+                },
+                {
+                    "id": "sadness",
+                    "label": "Sad",
+                    "words": [
+                        "Disappointed",
+                        "Lonely",
+                        "Hopeless",
+                        "Depressed"
+                    ]
+                },
+                {
+                    "id": "pain",
+                    "label": "Pain",
+                    "words": [
+                        "Hurt",
+                        "Heartbroken",
+                        "Devastated",
+                        "Wounded"
+                    ]
+                },
+                {
+                    "id": "confusion",
+                    "label": "Confused",
+                    "words": [
+                        "Puzzled",
+                        "Baffled",
+                        "Lost",
+                        "Hesitant"
+                    ]
+                }
+            ]
+        }
+    },
+    "needs": {
+        "title": "Needs",
+        "subtitle": "What do you need?",
+        "next": "Summary",
+        "list": [
+            {
+                "id": "connection",
+                "label": "Connection",
+                "words": [
+                    "Acceptance",
+                    "Affection",
+                    "Appreciation",
+                    "Belonging",
+                    "Cooperation",
+                    "Communication",
+                    "Closeness",
+                    "Community",
+                    "Companionship",
+                    "Compassion",
+                    "Consideration",
+                    "Consistency",
+                    "Empathy",
+                    "Inclusion",
+                    "Intimacy",
+                    "Love",
+                    "Mutuality",
+                    "Nurturing",
+                    "Respect",
+                    "Safety",
+                    "Security",
+                    "Stability",
+                    "Support",
+                    "To know and be known",
+                    "To see and be seen",
+                    "To understand and be understood",
+                    "Trust",
+                    "Warmth"
+                ]
+            },
+            {
+                "id": "physical",
+                "label": "Physical Well-being",
+                "words": [
+                    "Air",
+                    "Food",
+                    "Movement",
+                    "Rest",
+                    "Sexual expression",
+                    "Shelter",
+                    "Touch",
+                    "Water"
+                ]
+            },
+            {
+                "id": "honesty",
+                "label": "Honesty",
+                "words": [
+                    "Authenticity",
+                    "Integrity",
+                    "Presence"
+                ]
+            },
+            {
+                "id": "play",
+                "label": "Play",
+                "words": [
+                    "Joy",
+                    "Humor"
+                ]
+            },
+            {
+                "id": "peace",
+                "label": "Peace",
+                "words": [
+                    "Beauty",
+                    "Communion",
+                    "Ease",
+                    "Equality",
+                    "Harmony",
+                    "Inspiration",
+                    "Order"
+                ]
+            },
+            {
+                "id": "autonomy",
+                "label": "Autonomy",
+                "words": [
+                    "Choice",
+                    "Freedom",
+                    "Independence",
+                    "Space",
+                    "Spontaneity"
+                ]
+            },
+            {
+                "id": "meaning",
+                "label": "Meaning",
+                "words": [
+                    "Awareness",
+                    "Celebration of life",
+                    "Challenge",
+                    "Clarity",
+                    "Competence",
+                    "Consciousness",
+                    "Contribution",
+                    "Creativity",
+                    "Discovery",
+                    "Efficacy",
+                    "Effectiveness",
+                    "Growth",
+                    "Hope",
+                    "Learning",
+                    "Mourning",
+                    "Participation",
+                    "Purpose",
+                    "Self-expression",
+                    "Stimulation",
+                    "To matter",
+                    "Understanding"
+                ]
+            }
+        ]
+    },
+    "summary": {
+        "title": "Summary",
+        "because": "I feel these because my needs form...",
+        "my_needs": "My needs are...",
+        "restart": "Start Over"
+    },
+    "footer": {
+        "title": "Why choose emotions?",
+        "content": "In Nonviolent Communication (NVC), emotions are the signal lights to our inner 'needs'. When we feel comfortable (like happy, peaceful), it means needs are met; when uncomfortable (like angry, sad), needs are unmet. Identifying emotions accurately helps us clearly see what we truly value."
+    }
+}

@@ -3,6 +3,7 @@ import AppPage from './pages/AppPage'
 import AppLayout from './layouts/AppLayout';
 import DisclaimerPage from './pages/DisclaimerPage';
 import PrivacyPage from './pages/PrivacyPage';
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 // Redirect based on browser language
 const RootRedirect = () => {
@@ -16,6 +17,7 @@ const RootRedirect = () => {
 function App() {
     return (
         <BrowserRouter>
+            <AnalyticsTracker />
             <Routes>
                 <Route path="/" element={<RootRedirect />} />
                 {/* Make sure to capture all subpaths if needed, but App is currently single page. 

@@ -8,6 +8,7 @@ import Feedback from '../components/Feedback';
 import Summary from '../components/Summary';
 import Stepper from '../components/Stepper';
 import { emotions as emotionsData } from '../data/emotions';
+import { logEvent } from '../utils/analytics';
 
 function AppPage() {
   const { t, i18n } = useTranslation();
@@ -62,6 +63,7 @@ function AppPage() {
   const handleFeedbackSubmit = (inputFeedback: string) => {
     setFeedback(inputFeedback);
     setCurrentView('summary');
+    logEvent({ category: 'Flow', action: 'Complete' });
   };
 
   const handleRestart = () => {

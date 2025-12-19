@@ -151,7 +151,9 @@
         "title": "Summary",
         "because": "I feel these because my needs form...",
         "my_needs": "My needs are...",
-        "restart": "Start Over"
+        "restart": "Start Over",
+        "save_image": "Save as Image",
+        "print": "Print"
     },
     "footer": {
         "title": "Why choose emotions?",

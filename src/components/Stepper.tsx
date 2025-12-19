@@ -6,7 +6,7 @@ const Stepper = ({ currentStep }: StepperProps) => {
     const steps = [1, 2, 3, 4];
 
     return (
-        <div className="flex items-center justify-center mb-8 relative">
+        <div className="flex items-center justify-center mb-8 relative print:hidden">
             {/* Connector Line in Background */}
             <div className="absolute top-1/2 left-[20%] right-[20%] h-0.5 bg-slate-200 -z-0" />
 

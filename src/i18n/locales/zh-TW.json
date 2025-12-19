@@ -151,7 +151,9 @@
         "title": "總結",
         "because": "我會有這些感受，是因為...",
         "my_needs": "我的需求是...",
-        "restart": "重新開始"
+        "restart": "重新開始",
+        "save_image": "存為圖片",
+        "print": "列印"
     },
     "footer": {
         "title": "為什麼要選擇情緒？",

@@ -43,23 +43,6 @@ function App() {
     }
   }, [lang, i18n, navigate]);
 
-  // Sync Emotions and Needs to URL
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    if (emotions.length > 0) {
-      params.set('e', emotions.join(','));
-    } else {
-      params.delete('e');
-    }
-
-    if (needs.length > 0) {
-      params.set('n', needs.join(','));
-    } else {
-      params.delete('n');
-    }
-    setSearchParams(params, { replace: true });
-  }, [emotions, needs]);
-
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en-US' ? 'zh-TW' : 'en-US';
     navigate(`/${newLang}?${searchParams.toString()}`);

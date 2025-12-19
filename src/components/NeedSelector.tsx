@@ -11,11 +11,15 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
     const { t } = useTranslation();
     const [selectedNeeds, setSelectedNeeds] = useState<string[]>(initialSelection || []);
 
+    const MAX_SELECTION = 3;
+
     const toggleNeed = (key: string) => {
         if (selectedNeeds.includes(key)) {
             setSelectedNeeds(selectedNeeds.filter(n => n !== key));
         } else {
-            setSelectedNeeds([...selectedNeeds, key]);
+            if (selectedNeeds.length < MAX_SELECTION) {
+                setSelectedNeeds([...selectedNeeds, key]);
+            }
         }
     };
 
@@ -34,16 +38,27 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
                         </h3>
                         <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">
                             {cat.items.map((key) => {
-                                const isSelected = selectedNeeds.includes(key);
+                                const selectionIndex = selectedNeeds.indexOf(key);
+                                const isSelected = selectionIndex !== -1;
+                                const isDisabled = !isSelected && selectedNeeds.length >= MAX_SELECTION;
                                 return (
                                     <button
                                         key={key}
-                                        onClick={() => toggleNeed(key)}
-                                        className={`flex items-center justify-center py-3 px-2 rounded-xl border text-sm transition-all duration-200 w-full text-center min-h-[48px] cursor-pointer ${isSelected
-                                                ? 'bg-primary text-white border-primary shadow-sm'
+                                        onClick={() => !isDisabled && toggleNeed(key)}
+                                        disabled={isDisabled}
+                                        className={`flex items-center justify-center py-3 px-2 rounded-xl border text-sm transition-all duration-200 w-full text-center min-h-[48px] cursor-pointer relative ${isSelected
+                                            ? 'bg-primary text-white border-primary shadow-sm'
+                                            : isDisabled
+                                                ? 'opacity-40 cursor-not-allowed border-dashed border-slate-200 bg-slate-50 text-slate-300'
                                                 : 'bg-card text-card-foreground border-border hover:border-primary hover:bg-slate-50'
                                             }`}
                                     >
+                                        {/* Order Badge */}
+                                        {isSelected && (
+                                            <span className="absolute left-2 w-5 h-5 bg-white/30 text-white rounded-full flex items-center justify-center text-[10px] font-bold">
+                                                {selectionIndex + 1}
+                                            </span>
+                                        )}
                                         {t(`needs.${key}`)}
                                     </button>
                                 );

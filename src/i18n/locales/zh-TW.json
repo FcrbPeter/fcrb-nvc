@@ -161,5 +161,15 @@
         "disclaimer": "免責聲明",
         "privacy": "隱私權政策",
         "back": "返回"
+    },
+    "feedback": {
+        "title": "採取行動",
+        "subtitle_satisfied": "慶祝需求獲得滿足",
+        "subtitle_unsatisfied": "滋養未滿足的需求",
+        "prompt_satisfied": "如果你的需要滿足到，我可以感謝對方，或者感謝自己，類似：我要做D乜嘢多謝對方和自己，或者我同自己/對方講聲多謝",
+        "prompt_unsatisfied": "如果你的需要未滿足到，有什麼一小步的事可以做，立即滿足下自己的，比如我需要接納，我可以做D乜？比如我可以同自己講：我接納自己/或者我去祈禱，因為上帝會接納我（做少少嘢，去增加自己的幸福感）",
+        "placeholder_satisfied": "我想說...",
+        "placeholder_unsatisfied": "我可以...",
+        "next": "查看總結"
     }
 }

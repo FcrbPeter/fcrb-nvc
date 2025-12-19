@@ -3,7 +3,7 @@ interface StepperProps {
 }
 
 const Stepper = ({ currentStep }: StepperProps) => {
-    const steps = [1, 2, 3];
+    const steps = [1, 2, 3, 4];
 
     return (
         <div className="flex items-center justify-center mb-8 relative">
@@ -17,8 +17,8 @@ const Stepper = ({ currentStep }: StepperProps) => {
                 return (
                     <div key={step} className="relative z-10 mx-8 sm:mx-10 flex flex-col items-center">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${isActive || isCompleted
-                                ? 'bg-primary text-primary-foreground'
-                                : 'bg-slate-200 text-slate-500'
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-slate-200 text-slate-500'
                             }`}>
                             {step}
                         </div>

@@ -4,10 +4,12 @@ interface SummaryProps {
     topic: string;
     emotions: string[];
     needs: string[];
+    feedback?: string;
+    isSatisfied?: boolean;
     onRestart: () => void;
 }
 
-function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
+function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: SummaryProps) {
     const { t } = useTranslation();
 
     return (
@@ -26,11 +28,25 @@ function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
-                    {emotions.map(emotionKey => (
-                        <span key={emotionKey} className="px-3 py-1.5 bg-slate-100 rounded-lg text-sm font-medium text-foreground">
-                            {t(`emotions.${emotionKey}`)}
-                        </span>
-                    ))}
+                    {emotions.map((emotionKey, index) => {
+                        // Dynamic class based on satisfied state
+                        const containerClass = isSatisfied
+                            ? "flex items-center gap-2 bg-pink-50 px-3 py-1.5 rounded-lg text-sm font-medium text-pink-700 shadow-sm"
+                            : "flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-lg text-sm font-medium text-foreground";
+
+                        const badgeClass = isSatisfied
+                            ? "flex items-center justify-center w-5 h-5 bg-pink-100 rounded-full text-xs text-pink-600"
+                            : "flex items-center justify-center w-5 h-5 bg-slate-200 rounded-full text-xs text-slate-600";
+
+                        return (
+                            <div key={emotionKey} className={containerClass}>
+                                <span className={badgeClass}>
+                                    {index + 1}
+                                </span>
+                                {t(`emotions.${emotionKey}`)}
+                            </div>
+                        );
+                    })}
                 </div>
 
                 {/* Needs Section */}
@@ -39,12 +55,28 @@ function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
                         <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
                             {t('summary.my_needs')}
                         </p>
-                        <div className="flex flex-wrap gap-2">
-                            {needs.map(needKey => (
-                                <span key={needKey} className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-lg text-sm font-medium">
+                        <div className="flex flex-wrap gap-2 mb-6">
+                            {needs.map((needKey, index) => (
+                                <div key={needKey} className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 rounded-lg text-sm font-medium text-emerald-700">
+                                    <span className="flex items-center justify-center w-5 h-5 bg-emerald-100 rounded-full text-xs text-emerald-600">
+                                        {index + 1}
+                                    </span>
                                     {t(`needs.${needKey}`)}
-                                </span>
+                                </div>
                             ))}
+                        </div>
+                    </>
+                )}
+
+                {/* Feedback Section */}
+                {feedback && feedback.trim().length > 0 && (
+                    <>
+                        <hr className="border-t border-border my-4" />
+                        <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
+                            {t('feedback.title')}
+                        </p>
+                        <div className="text-foreground whitespace-pre-line leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            {feedback}
                         </div>
                     </>
                 )}

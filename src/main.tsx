@@ -2,18 +2,19 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import './index.css'
-import App from './App.jsx'
+import App from './App'
 import './i18n/i18n';
 
 // Redirect based on browser language
 const RootRedirect = () => {
-  const browserLang = navigator.language || navigator.userLanguage || 'en-US';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const browserLang = navigator.language || (navigator as any).userLanguage || 'en-US';
   // Default to zh-TW if Chinese is detected, otherwise en-US
   const targetLang = browserLang.toLowerCase().includes('zh') ? 'zh-TW' : 'en-US';
   return <Navigate to={`/${targetLang}`} replace />;
 };
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>

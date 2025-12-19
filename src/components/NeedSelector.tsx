@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { needs } from '../data/needs';
 
-function NeedSelector({ onNext, initialSelection }) {
-    const { t } = useTranslation();
-    const [selectedNeeds, setSelectedNeeds] = useState(initialSelection || []);
+interface NeedSelectorProps {
+    onNext: (selected: string[]) => void;
+    initialSelection: string[];
+}
 
-    const toggleNeed = (key) => {
+function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
+    const { t } = useTranslation();
+    const [selectedNeeds, setSelectedNeeds] = useState<string[]>(initialSelection || []);
+
+    const toggleNeed = (key: string) => {
         if (selectedNeeds.includes(key)) {
             setSelectedNeeds(selectedNeeds.filter(n => n !== key));
         } else {

@@ -1,7 +1,13 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-function Summary({ topic, emotions, needs, onRestart }) {
+interface SummaryProps {
+    topic: string;
+    emotions: string[];
+    needs: string[];
+    onRestart: () => void;
+}
+
+function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
     const { t } = useTranslation();
 
     return (

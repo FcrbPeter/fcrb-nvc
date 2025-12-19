@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function TopicInput({ onNext, initialValue }) {
+interface TopicInputProps {
+    onNext: (topic: string) => void;
+    initialValue: string;
+}
+
+function TopicInput({ onNext, initialValue }: TopicInputProps) {
     const { t } = useTranslation();
     const [topic, setTopic] = useState(initialValue || '');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         onNext(topic);
     };

@@ -1,6 +1,8 @@
-import React from 'react';
+interface StepperProps {
+    currentStep: number;
+}
 
-const Stepper = ({ currentStep }) => {
+const Stepper = ({ currentStep }: StepperProps) => {
     const steps = [1, 2, 3];
 
     return (

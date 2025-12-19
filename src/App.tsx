@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams, useNavigate } from 'react-router-dom';
 import './index.css';
@@ -16,8 +16,8 @@ function App() {
 
   const [currentView, setCurrentView] = useState('welcome'); // welcome, topic, emotions, needs, summary, disclaimer, privacy
   const [topic, setTopic] = useState('');
-  const [emotions, setEmotions] = useState([]);
-  const [needs, setNeeds] = useState([]);
+  const [emotions, setEmotions] = useState<string[]>([]);
+  const [needs, setNeeds] = useState<string[]>([]);
 
   // Sync URL language with i18n
   useEffect(() => {
@@ -39,17 +39,17 @@ function App() {
     setCurrentView('topic');
   };
 
-  const handleTopicSubmit = (inputTopic) => {
+  const handleTopicSubmit = (inputTopic: string) => {
     setTopic(inputTopic);
     setCurrentView('emotions');
   };
 
-  const handleEmotionsSubmit = (selectedEmotions) => {
+  const handleEmotionsSubmit = (selectedEmotions: string[]) => {
     setEmotions(selectedEmotions);
     setCurrentView('needs');
   };
 
-  const handleNeedsSubmit = (selectedNeeds) => {
+  const handleNeedsSubmit = (selectedNeeds: string[]) => {
     setNeeds(selectedNeeds);
     setCurrentView('summary');
   };

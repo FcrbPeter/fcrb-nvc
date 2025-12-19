@@ -166,8 +166,8 @@
         "title": "Taking Action",
         "subtitle_satisfied": "Celebrating Met Needs",
         "subtitle_unsatisfied": "Nurturing Unmet Needs",
-        "prompt_satisfied": "If your needs are met, you can thank the other person or yourself. For example: What can I do to thank the other person or myself? Or simply say thank you to myself/them.",
-        "prompt_unsatisfied": "If your needs are not met, what is one small step you can take to immediately satisfy yourself? For example, if I need acceptance, what can I do? I could tell myself: I accept myself / or I go pray because God will accept me (do something small to increase your own well-being).",
+        "prompt_satisfied": "When needs are met, we can express gratitude to others or ourselves. Consider: What action can I take to express my appreciation? Or simply say thank you to them or myself.",
+        "prompt_unsatisfied": "When needs are unmet, try taking a small step to care for yourself. For example: If I need 'acceptance', I can tell myself 'I accept myself', or do one small thing that brings me a sense of well-being.",
         "placeholder_satisfied": "I want to say...",
         "placeholder_unsatisfied": "I can...",
         "next": "See Summary"

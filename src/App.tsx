@@ -1,23 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import './index.css';
 import TopicInput from './components/TopicInput';
 import EmotionSelector from './components/EmotionSelector';
 import NeedSelector from './components/NeedSelector';
+import Feedback from './components/Feedback';
 import Summary from './components/Summary';
 import Stepper from './components/Stepper';
 import LegalViews from './components/LegalViews';
+import { emotions as emotionsData } from './data/emotions';
 
 function App() {
   const { t, i18n } = useTranslation();
   const { lang } = useParams();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [currentView, setCurrentView] = useState('welcome'); // welcome, topic, emotions, needs, summary, disclaimer, privacy
+  const [currentView, setCurrentView] = useState('welcome'); // welcome, topic, emotions, needs, feedback, summary, disclaimer, privacy
   const [topic, setTopic] = useState('');
   const [emotions, setEmotions] = useState<string[]>([]);
   const [needs, setNeeds] = useState<string[]>([]);
+  const [feedback, setFeedback] = useState('');
+
+  // Determine if satisfied based on emotions
+  const isSatisfied = useMemo(() => {
+    if (emotions.length === 0) return false;
+    // Check if the first emotion exists in 'satisfied' list
+    for (const cat of emotionsData.satisfied) {
+      if (cat.items.includes(emotions[0])) return true;
+    }
+    return false;
+  }, [emotions]);
 
   // Sync URL language with i18n
   useEffect(() => {
@@ -29,10 +43,26 @@ function App() {
     }
   }, [lang, i18n, navigate]);
 
+  // Sync Emotions and Needs to URL
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (emotions.length > 0) {
+      params.set('e', emotions.join(','));
+    } else {
+      params.delete('e');
+    }
+
+    if (needs.length > 0) {
+      params.set('n', needs.join(','));
+    } else {
+      params.delete('n');
+    }
+    setSearchParams(params, { replace: true });
+  }, [emotions, needs]);
+
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en-US' ? 'zh-TW' : 'en-US';
-    // Navigate to the new language URL, this preserves state as App component is not unmounted
-    navigate(`/${newLang}`);
+    navigate(`/${newLang}?${searchParams.toString()}`);
   };
 
   const handleStart = () => {
@@ -51,6 +81,11 @@ function App() {
 
   const handleNeedsSubmit = (selectedNeeds: string[]) => {
     setNeeds(selectedNeeds);
+    setCurrentView('feedback'); // Go to feedback instead of summary
+  };
+
+  const handleFeedbackSubmit = (inputFeedback: string) => {
+    setFeedback(inputFeedback);
     setCurrentView('summary');
   };
 
@@ -58,7 +93,9 @@ function App() {
     setTopic('');
     setEmotions([]);
     setNeeds([]);
+    setFeedback('');
     setCurrentView('welcome');
+    setSearchParams(new URLSearchParams());
   };
 
   const getStep = () => {
@@ -66,7 +103,8 @@ function App() {
       case 'topic': return 1;
       case 'emotions': return 2;
       case 'needs': return 3;
-      case 'summary': return 3; // Keep at 3 or hide stepper? Let's keep at 3 to show completion
+      case 'feedback': return 4;
+      case 'summary': return 4;
       default: return 0;
     }
   };
@@ -116,12 +154,27 @@ function App() {
           <NeedSelector onNext={handleNeedsSubmit} initialSelection={needs} />
         )}
 
+        {currentView === 'feedback' && (
+          <Feedback
+            onNext={handleFeedbackSubmit}
+            initialFeedback={feedback}
+            isSatisfied={isSatisfied}
+          />
+        )}
+
         {currentView === 'summary' && (
-          <Summary topic={topic} emotions={emotions} needs={needs} onRestart={handleRestart} />
+          <Summary
+            topic={topic}
+            emotions={emotions}
+            needs={needs}
+            feedback={feedback}
+            isSatisfied={isSatisfied}
+            onRestart={handleRestart}
+          />
         )}
 
         {(currentView === 'disclaimer' || currentView === 'privacy') && (
-          <LegalViews view={currentView} onBack={handleRestart} />
+          <LegalViews view={currentView} onBack={() => setCurrentView('welcome')} /> // simplified back
         )}
       </main>
 

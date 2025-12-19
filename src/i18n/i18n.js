@@ -13,11 +13,21 @@ const resources = {
   },
 };
 
+const getInitLanguage = () => {
+  const path = window.location.pathname;
+  if (path.includes('/en-US')) return 'en-US';
+  if (path.includes('/zh-TW')) return 'zh-TW';
+
+  // Fallback to browser detection if not in URL (e.g. at root)
+  const browserLang = navigator.language || navigator.userLanguage || 'en-US';
+  return browserLang.toLowerCase().includes('zh') ? 'zh-TW' : 'en-US';
+};
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'zh-TW', // Default to Traditional Chinese as requested by user context (HK/TW)
+    lng: getInitLanguage(),
     fallbackLng: 'en-US',
     interpolation: {
       escapeValue: false,

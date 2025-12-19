@@ -15,225 +15,137 @@
         "satisfied": "Needs Satisfied",
         "unsatisfied": "Needs Not Satisfied",
         "next": "Next",
-        "categories": {
-            "satisfied": [
-                {
-                    "id": "joy",
-                    "label": "Joyful",
-                    "words": [
-                        "Happy",
-                        "Excited",
-                        "Delighted",
-                        "Alive"
-                    ]
-                },
-                {
-                    "id": "peace",
-                    "label": "Peaceful",
-                    "words": [
-                        "Calm",
-                        "Relaxed",
-                        "Serene",
-                        "Secure"
-                    ]
-                },
-                {
-                    "id": "affection",
-                    "label": "Affectionate",
-                    "words": [
-                        "Loving",
-                        "Warm",
-                        "Compassionate",
-                        "Friendly"
-                    ]
-                },
-                {
-                    "id": "interest",
-                    "label": "Interested",
-                    "words": [
-                        "Curious",
-                        "Engaged",
-                        "Fascinated",
-                        "Inspired"
-                    ]
-                }
-            ],
-            "unsatisfied": [
-                {
-                    "id": "anger",
-                    "label": "Angry",
-                    "words": [
-                        "Frustrated",
-                        "Annoyed",
-                        "Irritated",
-                        "Furious"
-                    ]
-                },
-                {
-                    "id": "fear",
-                    "label": "Afraid",
-                    "words": [
-                        "Anxious",
-                        "Scared",
-                        "Worried",
-                        "Nervous"
-                    ]
-                },
-                {
-                    "id": "sadness",
-                    "label": "Sad",
-                    "words": [
-                        "Disappointed",
-                        "Lonely",
-                        "Hopeless",
-                        "Depressed"
-                    ]
-                },
-                {
-                    "id": "pain",
-                    "label": "Pain",
-                    "words": [
-                        "Hurt",
-                        "Heartbroken",
-                        "Devastated",
-                        "Wounded"
-                    ]
-                },
-                {
-                    "id": "confusion",
-                    "label": "Confused",
-                    "words": [
-                        "Puzzled",
-                        "Baffled",
-                        "Lost",
-                        "Hesitant"
-                    ]
-                }
-            ]
-        }
+        "joy": "Joyful",
+        "happy": "Happy",
+        "excited": "Excited",
+        "delighted": "Delighted",
+        "alive": "Alive",
+        "peace": "Peaceful",
+        "calm": "Calm",
+        "relaxed": "Relaxed",
+        "serene": "Serene",
+        "secure": "Secure",
+        "affection": "Affectionate",
+        "loving": "Loving",
+        "warm": "Warm",
+        "compassionate": "Compassionate",
+        "friendly": "Friendly",
+        "interest": "Interested",
+        "curious": "Curious",
+        "engaged": "Engaged",
+        "fascinated": "Fascinated",
+        "inspired": "Inspired",
+        "anger": "Angry",
+        "frustrated": "Frustrated",
+        "annoyed": "Annoyed",
+        "irritated": "Irritated",
+        "furious": "Furious",
+        "fear": "Afraid",
+        "anxious": "Anxious",
+        "scared": "Scared",
+        "worried": "Worried",
+        "nervous": "Nervous",
+        "sadness": "Sad",
+        "disappointed": "Disappointed",
+        "lonely": "Lonely",
+        "hopeless": "Hopeless",
+        "depressed": "Depressed",
+        "pain": "Pain",
+        "hurt": "Hurt",
+        "heartbroken": "Heartbroken",
+        "devastated": "Devastated",
+        "wounded": "Wounded",
+        "confusion": "Confused",
+        "puzzled": "Puzzled",
+        "baffled": "Baffled",
+        "lost": "Lost",
+        "hesitant": "Hesitant"
     },
     "needs": {
         "title": "Needs",
         "subtitle": "What do you need?",
         "next": "Summary",
-        "list": [
-            {
-                "id": "connection",
-                "label": "Connection",
-                "words": [
-                    "Acceptance",
-                    "Affection",
-                    "Appreciation",
-                    "Belonging",
-                    "Cooperation",
-                    "Communication",
-                    "Closeness",
-                    "Community",
-                    "Companionship",
-                    "Compassion",
-                    "Consideration",
-                    "Consistency",
-                    "Empathy",
-                    "Inclusion",
-                    "Intimacy",
-                    "Love",
-                    "Mutuality",
-                    "Nurturing",
-                    "Respect",
-                    "Safety",
-                    "Security",
-                    "Stability",
-                    "Support",
-                    "To know and be known",
-                    "To see and be seen",
-                    "To understand and be understood",
-                    "Trust",
-                    "Warmth"
-                ]
-            },
-            {
-                "id": "physical",
-                "label": "Physical Well-being",
-                "words": [
-                    "Air",
-                    "Food",
-                    "Movement",
-                    "Rest",
-                    "Sexual expression",
-                    "Shelter",
-                    "Touch",
-                    "Water"
-                ]
-            },
-            {
-                "id": "honesty",
-                "label": "Honesty",
-                "words": [
-                    "Authenticity",
-                    "Integrity",
-                    "Presence"
-                ]
-            },
-            {
-                "id": "play",
-                "label": "Play",
-                "words": [
-                    "Joy",
-                    "Humor"
-                ]
-            },
-            {
-                "id": "peace",
-                "label": "Peace",
-                "words": [
-                    "Beauty",
-                    "Communion",
-                    "Ease",
-                    "Equality",
-                    "Harmony",
-                    "Inspiration",
-                    "Order"
-                ]
-            },
-            {
-                "id": "autonomy",
-                "label": "Autonomy",
-                "words": [
-                    "Choice",
-                    "Freedom",
-                    "Independence",
-                    "Space",
-                    "Spontaneity"
-                ]
-            },
-            {
-                "id": "meaning",
-                "label": "Meaning",
-                "words": [
-                    "Awareness",
-                    "Celebration of life",
-                    "Challenge",
-                    "Clarity",
-                    "Competence",
-                    "Consciousness",
-                    "Contribution",
-                    "Creativity",
-                    "Discovery",
-                    "Efficacy",
-                    "Effectiveness",
-                    "Growth",
-                    "Hope",
-                    "Learning",
-                    "Mourning",
-                    "Participation",
-                    "Purpose",
-                    "Self-expression",
-                    "Stimulation",
-                    "To matter",
-                    "Understanding"
-                ]
-            }
-        ]
+        "connection": "Connection",
+        "acceptance": "Acceptance",
+        "affection": "Affection",
+        "appreciation": "Appreciation",
+        "belonging": "Belonging",
+        "cooperation": "Cooperation",
+        "communication": "Communication",
+        "closeness": "Closeness",
+        "community": "Community",
+        "companionship": "Companionship",
+        "compassion": "Compassion",
+        "consideration": "Consideration",
+        "consistency": "Consistency",
+        "empathy": "Empathy",
+        "inclusion": "Inclusion",
+        "intimacy": "Intimacy",
+        "love": "Love",
+        "mutuality": "Mutuality",
+        "nurturing": "Nurturing",
+        "respect": "Respect",
+        "safety": "Safety",
+        "security": "Security",
+        "stability": "Stability",
+        "support": "Support",
+        "to_know_and_be_known": "To know and be known",
+        "to_see_and_be_seen": "To see and be seen",
+        "to_understand_and_be_understood": "To understand and be understood",
+        "trust": "Trust",
+        "warmth": "Warmth",
+        "physical": "Physical Well-being",
+        "air": "Air",
+        "food": "Food",
+        "movement": "Movement",
+        "rest": "Rest",
+        "sexual_expression": "Sexual expression",
+        "shelter": "Shelter",
+        "touch": "Touch",
+        "water": "Water",
+        "honesty": "Honesty",
+        "authenticity": "Authenticity",
+        "integrity": "Integrity",
+        "presence": "Presence",
+        "play": "Play",
+        "joy": "Joy",
+        "humor": "Humor",
+        "peace": "Peace",
+        "beauty": "Beauty",
+        "communion": "Communion",
+        "ease": "Ease",
+        "equality": "Equality",
+        "harmony": "Harmony",
+        "inspiration": "Inspiration",
+        "order": "Order",
+        "autonomy": "Autonomy",
+        "choice": "Choice",
+        "freedom": "Freedom",
+        "independence": "Independence",
+        "space": "Space",
+        "spontaneity": "Spontaneity",
+        "meaning": "Meaning",
+        "awareness": "Awareness",
+        "celebration_of_life": "Celebration of life",
+        "challenge": "Challenge",
+        "clarity": "Clarity",
+        "competence": "Competence",
+        "consciousness": "Consciousness",
+        "contribution": "Contribution",
+        "creativity": "Creativity",
+        "discovery": "Discovery",
+        "efficacy": "Efficacy",
+        "effectiveness": "Effectiveness",
+        "growth": "Growth",
+        "hope": "Hope",
+        "learning": "Learning",
+        "mourning": "Mourning",
+        "participation": "Participation",
+        "purpose": "Purpose",
+        "self_expression": "Self-expression",
+        "stimulation": "Stimulation",
+        "to_matter": "To matter",
+        "understanding": "Understanding"
     },
     "summary": {
         "title": "Summary",

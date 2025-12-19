@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams, useNavigate } from 'react-router-dom';
 import './index.css';
 import TopicInput from './components/TopicInput';
 import EmotionSelector from './components/EmotionSelector';
@@ -10,14 +11,28 @@ import LegalViews from './components/LegalViews';
 
 function App() {
   const { t, i18n } = useTranslation();
+  const { lang } = useParams();
+  const navigate = useNavigate();
+
   const [currentView, setCurrentView] = useState('welcome'); // welcome, topic, emotions, needs, summary, disclaimer, privacy
   const [topic, setTopic] = useState('');
   const [emotions, setEmotions] = useState([]);
   const [needs, setNeeds] = useState([]);
 
+  // Sync URL language with i18n
+  useEffect(() => {
+    if (lang && (lang === 'en-US' || lang === 'zh-TW') && i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    } else if (lang && lang !== 'en-US' && lang !== 'zh-TW') {
+      // Fallback for invalid language in URL
+      navigate('/' + (i18n.language || 'en-US'), { replace: true });
+    }
+  }, [lang, i18n, navigate]);
+
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en-US' ? 'zh-TW' : 'en-US';
-    i18n.changeLanguage(newLang);
+    // Navigate to the new language URL, this preserves state as App component is not unmounted
+    navigate(`/${newLang}`);
   };
 
   const handleStart = () => {

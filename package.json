@@ -1,5 +1,13 @@
 {
   "name": "fcrb-nvc-app",
+  "description": "A bilingual web application to practice Nonviolent Communication (NVC) by identifying observations, feelings, and needs.",
+  "keywords": [
+    "nvc",
+    "nonviolent-communication",
+    "react",
+    "bilingual",
+    "empathy"
+  ],
   "license": "MIT",
   "version": "0.0.1",
   "type": "module",

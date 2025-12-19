@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useRef } from 'react';
 import { toPng } from 'html-to-image';
+import { logEvent } from '../utils/analytics';
 
 interface SummaryProps {
     topic: string;
@@ -43,6 +44,7 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                 link.download = `nvc-summary-${new Date().toISOString().split('T')[0]}.png`;
                 link.href = dataUrl;
                 link.click();
+                logEvent({ category: 'Engagement', action: 'Save Image' });
             } catch (err) {
                 console.error('Failed to save image:', err);
             }

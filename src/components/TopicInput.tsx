@@ -32,7 +32,7 @@ function TopicInput({ onNext, initialValue }: TopicInputProps) {
                     className="w-full min-h-[200px] p-4 rounded-lg border border-input font-inherit text-base resize-none bg-slate-50 shadow-inner focus:outline-none focus:ring-2 focus:ring-ring focus:border-input"
                     autoFocus
                 />
-                <div className="flex justify-end mt-4">
+                <div className="flex justify-center mt-4">
                     <button
                         type="submit"
                         className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg text-base font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"

@@ -1,7 +1,11 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-function LegalViews({ view, onBack }) {
+interface LegalViewsProps {
+    view: string;
+    onBack: () => void;
+}
+
+function LegalViews({ view, onBack }: LegalViewsProps) {
     const { t } = useTranslation();
 
     const renderContent = () => {

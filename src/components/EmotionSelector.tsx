@@ -1,16 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { emotions } from '../data/emotions';
 import './EmotionSelector.css';
 
-function EmotionSelector({ onNext, initialSelection }) {
+interface EmotionSelectorProps {
+    onNext: (selected: string[]) => void;
+    initialSelection: string[];
+}
+
+type NeedState = 'satisfied' | 'unsatisfied';
+
+function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
     const { t } = useTranslation();
-    const [needState, setNeedState] = useState('unsatisfied'); // 'satisfied' | 'unsatisfied'
-    const [selectedEmotions, setSelectedEmotions] = useState(initialSelection || []);
+    const [needState, setNeedState] = useState<NeedState>('unsatisfied'); // 'satisfied' | 'unsatisfied'
+    const [selectedEmotions, setSelectedEmotions] = useState<string[]>(initialSelection || []);
 
     const currentCategories = emotions[needState];
 
-    const toggleEmotion = (key) => {
+    const toggleEmotion = (key: string) => {
         if (selectedEmotions.includes(key)) {
             setSelectedEmotions(selectedEmotions.filter(e => e !== key));
         } else {

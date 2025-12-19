@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { emotions } from '../data/emotions';
-import './EmotionSelector.css';
+// import './EmotionSelector.css'; // Removed
 
 interface EmotionSelectorProps {
     onNext: (selected: string[]) => void;
@@ -26,48 +26,57 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
     };
 
     return (
-        <div className="fade-in-up">
+        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
             {/* Tabs */}
-            <div className="emotion-tabs-container">
+            <div className="flex mb-6 bg-slate-100 p-1 rounded-full shadow-inner relative">
                 <button
                     onClick={() => setNeedState('unsatisfied')}
-                    className={`emotion-tab ${needState === 'unsatisfied' ? 'emotion-tab--active' : ''}`}
-                    data-need="unsatisfied"
+                    className={`flex-1 p-2.5 rounded-full font-medium transition-all duration-300 relative z-10 border-none cursor-pointer outline-none ${needState === 'unsatisfied'
+                            ? 'bg-secondary text-white shadow-[0_4px_12px_rgba(144,164,174,0.3)] font-semibold'
+                            : 'text-slate-400 bg-transparent hover:text-slate-700'
+                        }`}
                 >
                     {t('emotions.unsatisfied')}
                 </button>
                 <button
                     onClick={() => setNeedState('satisfied')}
-                    className={`emotion-tab ${needState === 'satisfied' ? 'emotion-tab--active' : ''}`}
-                    data-need="satisfied"
+                    className={`flex-1 p-2.5 rounded-full font-medium transition-all duration-300 relative z-10 border-none cursor-pointer outline-none ${needState === 'satisfied'
+                            ? 'bg-primary text-white shadow-[0_4px_12px_rgba(29,157,136,0.3)] font-semibold'
+                            : 'text-slate-400 bg-transparent hover:text-slate-700'
+                        }`}
                 >
                     {t('emotions.satisfied')}
                 </button>
             </div>
 
             {/* Categories & Chips */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+            <div className="flex flex-col gap-6">
                 {currentCategories.map((cat) => (
-                    <div key={cat.category} className="fade-in-up">
-                        <h3 style={{
-                            fontSize: '1rem',
-                            color: 'var(--color-text-sub)',
-                            marginBottom: 'var(--spacing-sm)',
-                            paddingLeft: 'var(--spacing-xs)'
-                        }}>
+                    <div key={cat.category} className="animate-in slide-in-from-bottom-2 fade-in duration-500">
+                        <h3 className="text-base text-slate-400 mb-2 pl-1 font-medium">
                             {t(`emotions.${cat.category}`)}
                         </h3>
-                        <div className="emotion-grid">
+                        <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">
                             {cat.items.map((key) => {
                                 const isSelected = selectedEmotions.includes(key);
+                                let chipClass = "flex items-center justify-center py-3 px-4 rounded-xl border text-sm transition-all duration-200 w-full text-center min-h-[48px] cursor-pointer relative overflow-hidden focus:outline-none ";
+
+                                if (isSelected) {
+                                    chipClass += "border-transparent text-white shadow-md -translate-y-[1px] font-medium ";
+                                    if (needState === 'satisfied') {
+                                        chipClass += "bg-primary hover:bg-primary/90";
+                                    } else {
+                                        chipClass += "bg-secondary hover:bg-slate-500";
+                                    }
+                                } else {
+                                    chipClass += "border-border bg-card text-card-foreground hover:border-secondary hover:bg-slate-50 hover:-translate-y-[1px]";
+                                }
+
                                 return (
                                     <button
                                         key={key}
                                         onClick={() => toggleEmotion(key)}
-                                        className={`emotion-chip 
-                                            ${isSelected ? 'emotion-chip--selected' : ''} 
-                                            ${needState === 'satisfied' ? 'emotion-chip--satisfied' : 'emotion-chip--unsatisfied'}
-                                        `}
+                                        className={chipClass}
                                     >
                                         {t(`emotions.${key}`)}
                                     </button>
@@ -79,15 +88,11 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
             </div>
 
             {/* Next Button */}
-            <div className="next-button-container">
+            <div className="mt-8 flex justify-center">
                 <button
                     onClick={() => onNext(selectedEmotions)}
                     disabled={selectedEmotions.length === 0}
-                    className="primary-btn"
-                    style={{
-                        minWidth: '200px',
-                        fontSize: '1rem'
-                    }}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg text-base font-semibold min-w-[200px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {t('emotions.next')} ({selectedEmotions.length})
                 </button>

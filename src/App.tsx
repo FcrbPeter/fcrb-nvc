@@ -72,33 +72,32 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="flex flex-col min-h-screen bg-background">
       {/* Header with Gradient */}
-      <header className="header-bg">
-        <div style={{ position: 'absolute', top: 20, right: 20 }}>
-          <button onClick={toggleLanguage} style={{ color: 'white', opacity: 0.8, fontSize: '0.9rem' }}>
+      <header className="h-80 w-full flex flex-col items-center pt-[60px] text-white text-center bg-gradient-to-br from-[#244e59] via-[#1d9d88] to-[#4fd1c5] relative">
+        <div className="absolute top-5 right-5">
+          <button onClick={toggleLanguage} className="text-white/80 text-sm hover:text-white transition-colors">
             {i18n.language === 'en-US' ? '中文' : 'English'}
           </button>
         </div>
-        <h1 style={{ fontSize: '2rem', marginBottom: '8px' }}>{t('welcome.title')}</h1>
-        <p style={{ opacity: 0.9, fontSize: '1.1rem' }}>{t('welcome.subtitle')}</p>
+        <h1 className="text-4xl mb-2 font-bold">{t('welcome.title')}</h1>
+        <p className="opacity-90 text-lg">{t('welcome.subtitle')}</p>
       </header>
 
       {/* Main Card Container */}
-      <main className="card-container">
+      <main className="bg-card text-card-foreground rounded-2xl shadow-md p-12 max-w-[800px] w-[90%] mx-auto -mt-[100px] mb-8 relative z-10 min-h-[400px]">
         {currentView !== 'welcome' && currentView !== 'disclaimer' && currentView !== 'privacy' && (
           <Stepper currentStep={getStep()} />
         )}
 
         {currentView === 'welcome' && (
-          <div className="fade-in-up" style={{ textAlign: 'center', padding: '40px 0' }}>
-            <p style={{ color: 'var(--color-text-main)', marginBottom: 'var(--spacing-xl)', fontSize: '1.2rem', whiteSpace: 'pre-line' }}>
+          <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 text-center py-10">
+            <p className="text-foreground mb-8 text-xl whitespace-pre-line">
               {t('welcome.steps_intro')}
             </p>
             <button
               onClick={handleStart}
-              className="primary-btn"
-              style={{ padding: '16px 48px', fontSize: '1.1rem' }}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-4 rounded-lg text-lg font-semibold transition-colors"
             >
               {t('welcome.start')}
             </button>
@@ -126,12 +125,9 @@ function App() {
         )}
       </main>
 
-      <div className="info-footer">
-        <h4 style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            width: '20px', height: '20px', borderRadius: '50%', backgroundColor: 'var(--color-info-text)', color: 'white', marginRight: '8px', fontSize: '12px'
-          }}>i</span>
+      <div className="max-w-[800px] w-[90%] mx-auto p-6 bg-blue-50 text-blue-900 rounded-2xl text-sm mb-8 leading-relaxed">
+        <h4 className="flex items-center mb-2 font-semibold">
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-700 text-white mr-2 text-xs">i</span>
           {t('footer.title')}
         </h4>
         <p>
@@ -140,12 +136,12 @@ function App() {
       </div>
 
       {/* Real Footer */}
-      <footer className="app-footer">
-        <p style={{ marginBottom: '8px' }}>
-          <button onClick={() => setCurrentView('disclaimer')} style={{ marginRight: '16px', opacity: 0.8, fontSize: '0.8.5rem', textDecoration: 'underline' }}>
+      <footer className="text-center p-4 mt-auto text-xs opacity-70 w-full">
+        <p className="mb-2">
+          <button onClick={() => setCurrentView('disclaimer')} className="mr-4 opacity-80 decoration-1 underline hover:opacity-100">
             {t('legal.disclaimer')}
           </button>
-          <button onClick={() => setCurrentView('privacy')} style={{ opacity: 0.8, fontSize: '0.8.5rem', textDecoration: 'underline' }}>
+          <button onClick={() => setCurrentView('privacy')} className="opacity-80 decoration-1 underline hover:opacity-100">
             {t('legal.privacy')}
           </button>
         </p>

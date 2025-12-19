@@ -20,47 +20,29 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
     };
 
     return (
-        <div className="fade-in-up" style={{ paddingBottom: '40px' }}>
-            <div style={{ textAlign: 'center', marginBottom: 'var(--spacing-lg)' }}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--color-text-main)' }}>{t('needs.title')}</h2>
-                <p style={{ color: 'var(--color-text-sub)' }}>{t('needs.subtitle')}</p>
+        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 pb-10">
+            <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold text-foreground mb-1">{t('needs.title')}</h2>
+                <p className="text-slate-500">{t('needs.subtitle')}</p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+            <div className="flex flex-col gap-6">
                 {needs.map((cat) => (
-                    <div key={cat.category} className="fade-in-up">
-                        <h3 style={{
-                            fontSize: '1rem',
-                            color: 'var(--color-text-sub)',
-                            marginBottom: 'var(--spacing-sm)',
-                            paddingLeft: 'var(--spacing-xs)'
-                        }}>
+                    <div key={cat.category} className="animate-in slide-in-from-bottom-2 fade-in duration-500">
+                        <h3 className="text-base text-slate-400 mb-2 pl-1 font-medium">
                             {t(`needs.${cat.category}`)}
                         </h3>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))', gap: '12px' }}>
+                        <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">
                             {cat.items.map((key) => {
                                 const isSelected = selectedNeeds.includes(key);
                                 return (
                                     <button
                                         key={key}
                                         onClick={() => toggleNeed(key)}
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            padding: '12px 8px',
-                                            borderRadius: '12px',
-                                            border: `1px solid ${isSelected ? 'var(--color-primary)' : 'var(--color-border)'}`,
-                                            backgroundColor: isSelected ? 'var(--color-primary)' : 'var(--color-surface)',
-                                            color: isSelected ? 'white' : 'var(--color-text-main)',
-                                            fontSize: '0.9rem',
-                                            transition: 'all 0.2s',
-                                            boxShadow: isSelected ? 'var(--shadow-sm)' : 'none',
-                                            width: '100%',
-                                            textAlign: 'center',
-                                            minHeight: '48px',
-                                            cursor: 'pointer'
-                                        }}
+                                        className={`flex items-center justify-center py-3 px-2 rounded-xl border text-sm transition-all duration-200 w-full text-center min-h-[48px] cursor-pointer ${isSelected
+                                                ? 'bg-primary text-white border-primary shadow-sm'
+                                                : 'bg-card text-card-foreground border-border hover:border-primary hover:bg-slate-50'
+                                            }`}
                                     >
                                         {t(`needs.${key}`)}
                                     </button>
@@ -71,19 +53,11 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
                 ))}
             </div>
 
-            <div style={{
-                marginTop: 'var(--spacing-xl)',
-                display: 'flex',
-                justifyContent: 'center'
-            }}>
+            <div className="mt-8 flex justify-center">
                 <button
                     onClick={() => onNext(selectedNeeds)}
                     disabled={selectedNeeds.length === 0}
-                    className="primary-btn"
-                    style={{
-                        minWidth: '200px',
-                        fontSize: '1rem'
-                    }}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg text-base font-semibold min-w-[200px] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {t('needs.next')} ({selectedNeeds.length})
                 </button>

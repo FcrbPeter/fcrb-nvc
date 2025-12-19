@@ -6,50 +6,20 @@ const Stepper = ({ currentStep }: StepperProps) => {
     const steps = [1, 2, 3];
 
     return (
-        <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 'var(--spacing-xl)',
-            position: 'relative'
-        }}>
+        <div className="flex items-center justify-center mb-8 relative">
             {/* Connector Line in Background */}
-            <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '20%',
-                right: '20%',
-                height: '2px',
-                backgroundColor: '#e0e0e0',
-                zIndex: 0
-            }} />
+            <div className="absolute top-1/2 left-[20%] right-[20%] h-0.5 bg-slate-200 -z-0" />
 
             {steps.map((step) => {
                 const isActive = step === currentStep;
                 const isCompleted = step < currentStep;
 
                 return (
-                    <div key={step} style={{
-                        position: 'relative',
-                        zIndex: 1,
-                        margin: '0 40px',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center'
-                    }}>
-                        <div style={{
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '50%',
-                            backgroundColor: isActive || isCompleted ? 'var(--color-primary)' : '#e0e0e0',
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontWeight: 600,
-                            fontSize: '0.9rem',
-                            transition: 'all 0.3s ease'
-                        }}>
+                    <div key={step} className="relative z-10 mx-8 sm:mx-10 flex flex-col items-center">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300 ${isActive || isCompleted
+                                ? 'bg-primary text-primary-foreground'
+                                : 'bg-slate-200 text-slate-500'
+                            }`}>
                             {step}
                         </div>
                     </div>

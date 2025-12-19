@@ -16,49 +16,26 @@ function TopicInput({ onNext, initialValue }: TopicInputProps) {
     };
 
     return (
-        <div className="fade-in-up">
-            <h2 style={{
-                marginBottom: '8px',
-                textAlign: 'center',
-                fontSize: '1.5rem',
-                fontWeight: 'bold',
-                color: 'var(--color-text-main)'
-            }}>
+        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 px-4 sm:px-0">
+            <h2 className="mb-2 text-center text-2xl font-bold text-foreground">
                 {t('topic.question')}
             </h2>
-            <p style={{
-                textAlign: 'center',
-                color: 'var(--color-text-sub)',
-                marginBottom: '24px',
-                fontSize: '0.95rem',
-                whiteSpace: 'pre-line' // Allow newlines from JSON
-            }}>
+            <p className="text-center text-muted-foreground mb-6 text-base whitespace-pre-line">
                 {t('topic.instruction')}
             </p>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <textarea
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder={t('topic.placeholder')}
-                    style={{
-                        width: '100%',
-                        minHeight: '200px',
-                        padding: '16px',
-                        borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--color-border)',
-                        fontFamily: 'inherit',
-                        fontSize: '1rem',
-                        resize: 'none',
-                        backgroundColor: '#f8f9fa',
-                        boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.05)'
-                    }}
+                    className="w-full min-h-[200px] p-4 rounded-lg border border-input font-inherit text-base resize-none bg-slate-50 shadow-inner focus:outline-none focus:ring-2 focus:ring-ring focus:border-input"
                     autoFocus
                 />
-                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                <div className="flex justify-end mt-4">
                     <button
                         type="submit"
-                        className="primary-btn"
+                        className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg text-base font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         disabled={!topic.trim()}
                     >
                         {t('topic.next')} →

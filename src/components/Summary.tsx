@@ -11,42 +11,23 @@ function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
     const { t } = useTranslation();
 
     return (
-        <div className="fade-in-up" style={{ textAlign: 'center' }}>
-            <h2 style={{ marginBottom: 'var(--spacing-lg)' }}>{t('summary.title')}</h2>
+        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 text-center">
+            <h2 className="mb-6 text-2xl font-bold">{t('summary.title')}</h2>
 
-            <div style={{
-                backgroundColor: 'var(--color-surface)',
-                padding: 'var(--spacing-lg)',
-                borderRadius: 'var(--radius-lg)',
-                boxShadow: 'var(--shadow-md)',
-                marginBottom: 'var(--spacing-xl)',
-                textAlign: 'left'
-            }}>
-                <p style={{
-                    fontSize: '1.1rem',
-                    marginBottom: 'var(--spacing-md)',
-                    color: 'var(--color-text-main)',
-                    lineHeight: '1.6'
-                }}>
+            <div className="bg-card p-6 rounded-2xl shadow-md mb-8 text-left bg-white">
+                <p className="text-lg mb-4 text-foreground leading-relaxed italic">
                     "{topic}"
                 </p>
 
-                <hr style={{ border: 'none', borderTop: '1px solid var(--color-border)', margin: 'var(--spacing-md) 0' }} />
+                <hr className="border-t border-border my-4" />
 
-                <p style={{ color: 'var(--color-text-sub)', marginBottom: 'var(--spacing-sm)' }}>
+                <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
                     {t('summary.because')}
                 </p>
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: 'var(--spacing-lg)' }}>
+                <div className="flex flex-wrap gap-2 mb-6">
                     {emotions.map(emotionKey => (
-                        <span key={emotionKey} style={{
-                            padding: '6px 12px',
-                            backgroundColor: 'var(--color-bg)',
-                            borderRadius: '8px',
-                            fontSize: '0.9rem',
-                            fontWeight: 500,
-                            color: 'var(--color-text-main)'
-                        }}>
+                        <span key={emotionKey} className="px-3 py-1.5 bg-slate-100 rounded-lg text-sm font-medium text-foreground">
                             {t(`emotions.${emotionKey}`)}
                         </span>
                     ))}
@@ -55,19 +36,12 @@ function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
                 {/* Needs Section */}
                 {needs && needs.length > 0 && (
                     <>
-                        <p style={{ color: 'var(--color-text-sub)', marginBottom: 'var(--spacing-sm)' }}>
+                        <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
                             {t('summary.my_needs')}
                         </p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                        <div className="flex flex-wrap gap-2">
                             {needs.map(needKey => (
-                                <span key={needKey} style={{
-                                    padding: '6px 12px',
-                                    backgroundColor: '#e6f7ff',
-                                    color: '#006d9e',
-                                    borderRadius: '8px',
-                                    fontSize: '0.9rem',
-                                    fontWeight: 500
-                                }}>
+                                <span key={needKey} className="px-3 py-1.5 bg-sky-50 text-sky-700 rounded-lg text-sm font-medium">
                                     {t(`needs.${needKey}`)}
                                 </span>
                             ))}
@@ -78,14 +52,7 @@ function Summary({ topic, emotions, needs, onRestart }: SummaryProps) {
 
             <button
                 onClick={onRestart}
-                style={{
-                    border: '1px solid var(--color-text-main)',
-                    color: 'var(--color-text-main)',
-                    padding: '12px 32px',
-                    borderRadius: 'var(--radius-lg)',
-                    fontSize: '1rem',
-                    fontWeight: 600
-                }}
+                className="border border-foreground text-foreground px-8 py-3 rounded-xl text-base font-semibold hover:bg-slate-50 transition-colors"
             >
                 {t('summary.restart')}
             </button>

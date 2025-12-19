@@ -51,7 +51,7 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
                 <button
                     onClick={() => handleTabChange('satisfied')}
                     className={`flex-1 p-2.5 rounded-full font-medium transition-all duration-300 relative z-10 border-none cursor-pointer outline-none ${needState === 'satisfied'
-                        ? 'bg-pink-500 text-white shadow-[0_4px_12px_rgba(236,72,153,0.3)] font-semibold'
+                        ? 'bg-rose-500 text-white shadow-[0_4px_12px_rgba(244,63,94,0.3)] font-semibold'
                         : 'text-slate-400 bg-transparent hover:text-slate-700'
                         }`}
                 >
@@ -77,7 +77,7 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
                                 if (isSelected) {
                                     chipClass += "border-transparent text-white shadow-md -translate-y-[1px] font-medium ";
                                     if (needState === 'satisfied') {
-                                        chipClass += "bg-pink-500 hover:bg-pink-600";
+                                        chipClass += "bg-rose-500 hover:bg-rose-600";
                                     } else {
                                         chipClass += "bg-secondary hover:bg-slate-500";
                                     }

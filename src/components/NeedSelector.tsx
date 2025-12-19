@@ -24,7 +24,7 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
     };
 
     return (
-        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 pb-10">
+        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
             <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold text-foreground mb-1">{t('needs.title')}</h2>
                 <p className="text-slate-500">{t('needs.subtitle')}</p>

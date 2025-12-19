@@ -16,7 +16,7 @@ function Feedback({ onNext, initialFeedback, isSatisfied }: FeedbackProps) {
     };
 
     return (
-        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 pb-10">
+        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
             <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold text-foreground mb-2">{t('feedback.title')}</h2>
                 <h3 className="text-lg text-primary font-medium">

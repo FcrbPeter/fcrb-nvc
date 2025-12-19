@@ -1,26 +1,46 @@
-# NVC Emotion Selector / 非暴力溝通情緒選擇器
+# NVC Emotion Selector
+
+![CI](https://github.com/FcrbPeter/fcrb-nvc/actions/workflows/ci.yml/badge.svg)
+
 
 A bilingual web application designed to help users practice **Nonviolent Communication (NVC)**. This tool guides you through the process of identifying your observations, feelings, and needs to gain clarity on your inner state.
 
-透過非暴力溝通（NVC）釐清你的感受。此工具引導你完成觀察、感受和需求的確認過程，幫助你更清晰地了解自己的內在狀態。
+## Features
 
-## Features / 功能特點
+- **5-Step Process**:
+    1.  **Topic**: Describe the situation objectively.
+    2.  **Emotions**: Identify your emotions from a categorized list (Satisfied/Unsatisfied).
+    3.  **Needs**: Discover the underlying needs behind your emotions.
+    4.  **Feedback**: Review the constructed NVC statement.
+    5.  **Summary**: View the complete content with options to **Save as Image** or **Print**.
+- **Bilingual Support**: Seamlessly switch between English and Traditional Chinese via URL (e.g., `/en-US`, `/zh-TW`).
+- **URL-Based Routing**: Application state and language are reflected in the URL for easy sharing and navigation.
+- **Responsive Design**: Optimized for both desktop and mobile use, featuring a modern UI with Tailwind CSS.
+- **Image Export**: Save the summary card as an image for easy sharing and printing.
 
-- **3-Step Process / 三步驟引導**:
-    1.  **Observation / 觀察**: Describe the situation objectively (描述發生的事情).
-    2.  **Feelings / 感受**: Identify your emotions from a categorized list (Satisfied/Unsatisfied).
-    3.  **Needs / 需求**: Discover the underlying needs behind your emotions.
-- **Bilingual Support / 雙語支持**: Seamlessly switch between English and Traditional Chinese (繁體中文).
-- **Summary / 總結**: Generate a structured NVC statement based on your inputs.
-- **Responsive Design**: Optimized for both desktop and mobile use.
+## Tech Stack
 
-## Tech Stack / 技術棧
+- **Core**: [React 19](https://react.dev/), [Vite](https://vitejs.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (using CSS Variables & OKLCH colors), `class-variance-authority`, `clsx`
+- **Routing**: [React Router v7](https://reactrouter.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Internationalization**: [react-i18next](https://react.i18next.com/)
+- **Utilities**: `html-to-image` for capturing summary cards.
 
-- **Frontend**: React 19, Vite
-- **Styling**: Plain CSS (Custom Design System with Variables, Flexbox/Grid)
-- **Internationalization**: react-i18next
+## Project Structure
 
-## Getting Started / 快速開始
+```
+src/
+├── components/   # Reusable UI components (buttons, cards, layout)
+├── data/         # Static data for emotions and needs
+├── i18n/         # Localization configurations and translation files
+├── layouts/      # Application layout wrappers
+├── pages/        # Main route components (Topic, Emotions, Needs, Summary)
+├── lib/          # Utility functions (utils.ts)
+└── index.css     # Global styles and Tailwind v4 configuration
+```
+
+## Getting Started
 
 1.  **Clone the repository**
     ```bash
@@ -30,16 +50,16 @@ A bilingual web application designed to help users practice **Nonviolent Communi
 
 2.  **Install dependencies**
     ```bash
-    pnpm install
-    # or
     npm install
+    # or
+    pnpm install
     ```
 
 3.  **Run the development server**
     ```bash
-    pnpm dev
-    # or
     npm run dev
+    # or
+    pnpm dev
     ```
 
 ## License

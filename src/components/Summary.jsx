@@ -32,8 +32,8 @@ function Summary({ topic, emotions, needs, onRestart }) {
                 </p>
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: 'var(--spacing-lg)' }}>
-                    {emotions.map(emotion => (
-                        <span key={emotion} style={{
+                    {emotions.map(emotionKey => (
+                        <span key={emotionKey} style={{
                             padding: '6px 12px',
                             backgroundColor: 'var(--color-bg)',
                             borderRadius: '8px',
@@ -41,7 +41,7 @@ function Summary({ topic, emotions, needs, onRestart }) {
                             fontWeight: 500,
                             color: 'var(--color-text-main)'
                         }}>
-                            {emotion}
+                            {t(`emotions.${emotionKey}`)}
                         </span>
                     ))}
                 </div>
@@ -53,8 +53,8 @@ function Summary({ topic, emotions, needs, onRestart }) {
                             {t('summary.my_needs')}
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                            {needs.map(need => (
-                                <span key={need} style={{
+                            {needs.map(needKey => (
+                                <span key={needKey} style={{
                                     padding: '6px 12px',
                                     backgroundColor: '#e6f7ff',
                                     color: '#006d9e',
@@ -62,7 +62,7 @@ function Summary({ topic, emotions, needs, onRestart }) {
                                     fontSize: '0.9rem',
                                     fontWeight: 500
                                 }}>
-                                    {need}
+                                    {t(`needs.${needKey}`)}
                                 </span>
                             ))}
                         </div>

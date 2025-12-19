@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { needs } from '../data/needs';
 
 function NeedSelector({ onNext, initialSelection }) {
     const { t } = useTranslation();
     const [selectedNeeds, setSelectedNeeds] = useState(initialSelection || []);
 
-    const categories = t('needs.list', { returnObjects: true });
-
-    const toggleNeed = (word) => {
-        if (selectedNeeds.includes(word)) {
-            setSelectedNeeds(selectedNeeds.filter(n => n !== word));
+    const toggleNeed = (key) => {
+        if (selectedNeeds.includes(key)) {
+            setSelectedNeeds(selectedNeeds.filter(n => n !== key));
         } else {
-            setSelectedNeeds([...selectedNeeds, word]);
+            setSelectedNeeds([...selectedNeeds, key]);
         }
     };
 
@@ -23,23 +22,23 @@ function NeedSelector({ onNext, initialSelection }) {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
-                {categories.map((cat) => (
-                    <div key={cat.id} className="fade-in-up">
+                {needs.map((cat) => (
+                    <div key={cat.category} className="fade-in-up">
                         <h3 style={{
                             fontSize: '1rem',
                             color: 'var(--color-text-sub)',
                             marginBottom: 'var(--spacing-sm)',
                             paddingLeft: 'var(--spacing-xs)'
                         }}>
-                            {cat.label}
+                            {t(`needs.${cat.category}`)}
                         </h3>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))', gap: '12px' }}>
-                            {cat.words.map((word) => {
-                                const isSelected = selectedNeeds.includes(word);
+                            {cat.items.map((key) => {
+                                const isSelected = selectedNeeds.includes(key);
                                 return (
                                     <button
-                                        key={word}
-                                        onClick={() => toggleNeed(word)}
+                                        key={key}
+                                        onClick={() => toggleNeed(key)}
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
@@ -58,7 +57,7 @@ function NeedSelector({ onNext, initialSelection }) {
                                             cursor: 'pointer'
                                         }}
                                     >
-                                        {word}
+                                        {t(`needs.${key}`)}
                                     </button>
                                 );
                             })}

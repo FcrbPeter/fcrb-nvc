@@ -15,216 +15,137 @@
         "satisfied": "需要獲得滿足",
         "unsatisfied": "需要未獲滿足",
         "next": "下一步",
-        "categories": {
-            "satisfied": [
-                {
-                    "id": "joy",
-                    "label": "喜悅 / 開心",
-                    "words": [
-                        "興奮",
-                        "快樂",
-                        "愉悅",
-                        "充滿活力"
-                    ]
-                },
-                {
-                    "id": "peace",
-                    "label": "平靜 / 放鬆",
-                    "words": [
-                        "冷靜",
-                        "自在",
-                        "安詳",
-                        "安全"
-                    ]
-                },
-                {
-                    "id": "affection",
-                    "label": "愛 / 好感",
-                    "words": [
-                        "溫暖",
-                        "友善",
-                        "同理",
-                        "親密"
-                    ]
-                },
-                {
-                    "id": "interest",
-                    "label": "感興趣 / 好奇",
-                    "words": [
-                        "好奇",
-                        "專注",
-                        "著迷",
-                        "受到啟發"
-                    ]
-                }
-            ],
-            "unsatisfied": [
-                {
-                    "id": "anger",
-                    "label": "生氣 / 挫折",
-                    "words": [
-                        "煩躁",
-                        "不滿",
-                        "憤怒",
-                        "氣憤"
-                    ]
-                },
-                {
-                    "id": "fear",
-                    "label": "害怕 / 焦慮",
-                    "words": [
-                        "擔心",
-                        "恐懼",
-                        "緊張",
-                        "不安"
-                    ]
-                },
-                {
-                    "id": "sadness",
-                    "label": "難過 / 沮喪",
-                    "words": [
-                        "失望",
-                        "孤單",
-                        "絕望",
-                        "憂鬱"
-                    ]
-                },
-                {
-                    "id": "pain",
-                    "label": "痛苦 / 受傷",
-                    "words": [
-                        "心碎",
-                        "受傷",
-                        "痛苦",
-                        "悲痛"
-                    ]
-                },
-                {
-                    "id": "confusion",
-                    "label": "困惑 / 茫然",
-                    "words": [
-                        "不解",
-                        "迷惘",
-                        "猶豫",
-                        "混亂"
-                    ]
-                }
-            ]
-        }
+        "joy": "喜悅 / 開心",
+        "happy": "興奮",
+        "excited": "快樂",
+        "delighted": "愉悅",
+        "alive": "充滿活力",
+        "peace": "平靜 / 放鬆",
+        "calm": "冷靜",
+        "relaxed": "自在",
+        "serene": "安詳",
+        "secure": "安全",
+        "affection": "愛 / 好感",
+        "loving": "溫暖",
+        "warm": "友善",
+        "compassionate": "同理",
+        "friendly": "親密",
+        "interest": "感興趣 / 好奇",
+        "curious": "好奇",
+        "engaged": "專注",
+        "fascinated": "著迷",
+        "inspired": "受到啟發",
+        "anger": "生氣 / 挫折",
+        "frustrated": "煩躁",
+        "annoyed": "不滿",
+        "irritated": "憤怒",
+        "furious": "氣憤",
+        "fear": "害怕 / 焦慮",
+        "anxious": "擔心",
+        "scared": "恐懼",
+        "worried": "緊張",
+        "nervous": "不安",
+        "sadness": "難過 / 沮喪",
+        "disappointed": "失望",
+        "lonely": "孤單",
+        "hopeless": "絕望",
+        "depressed": "憂鬱",
+        "pain": "痛苦 / 受傷",
+        "hurt": "心碎",
+        "heartbroken": "受傷",
+        "devastated": "痛苦",
+        "wounded": "悲痛",
+        "confusion": "困惑 / 茫然",
+        "puzzled": "不解",
+        "baffled": "迷惘",
+        "lost": "猶豫",
+        "hesitant": "混亂"
     },
     "needs": {
         "title": "需求",
         "subtitle": "你渴望什麼？",
         "next": "總結",
-        "list": [
-            {
-                "id": "connection",
-                "label": "連結",
-                "words": [
-                    "接納",
-                    "欣賞",
-                    "歸屬感",
-                    "合作",
-                    "溝通",
-                    "親密",
-                    "社群",
-                    "陪伴",
-                    "同理心",
-                    "體貼",
-                    "一致性",
-                    "包容",
-                    "愛",
-                    "相互性",
-                    "滋養",
-                    "尊重",
-                    "安全感",
-                    "穩定",
-                    "支持",
-                    "被了解",
-                    "信任",
-                    "溫暖"
-                ]
-            },
-            {
-                "id": "physical",
-                "label": "身體福祉",
-                "words": [
-                    "空氣",
-                    "食物",
-                    "運動",
-                    "休息",
-                    "性",
-                    "住所",
-                    "觸摸",
-                    "水"
-                ]
-            },
-            {
-                "id": "honesty",
-                "label": "誠實",
-                "words": [
-                    "真實",
-                    "正直",
-                    "當下"
-                ]
-            },
-            {
-                "id": "play",
-                "label": "玩耍",
-                "words": [
-                    "樂趣",
-                    "幽默"
-                ]
-            },
-            {
-                "id": "peace",
-                "label": "和平",
-                "words": [
-                    "美",
-                    "和諧",
-                    "自在",
-                    "平等",
-                    "秩序",
-                    "靈感"
-                ]
-            },
-            {
-                "id": "autonomy",
-                "label": "自主",
-                "words": [
-                    "選擇",
-                    "自由",
-                    "獨立",
-                    "空間",
-                    "自發性"
-                ]
-            },
-            {
-                "id": "meaning",
-                "label": "意義",
-                "words": [
-                    "覺察",
-                    "慶祝",
-                    "挑戰",
-                    "清晰",
-                    "能力",
-                    "意識",
-                    "貢獻",
-                    "創造力",
-                    "發現",
-                    "效率",
-                    "成長",
-                    "希望",
-                    "學習",
-                    "哀悼",
-                    "參與",
-                    "目的",
-                    "自我表達",
-                    "重要性",
-                    "理解"
-                ]
-            }
-        ]
+        "connection": "連結",
+        "acceptance": "接納",
+        "affection": "欣賞",
+        "appreciation": "歸屬感",
+        "belonging": "合作",
+        "cooperation": "溝通",
+        "communication": "親密",
+        "closeness": "社群",
+        "community": "陪伴",
+        "companionship": "同理心",
+        "compassion": "體貼",
+        "consideration": "一致性",
+        "consistency": "包容",
+        "empathy": "愛",
+        "inclusion": "相互性",
+        "intimacy": "滋養",
+        "love": "尊重",
+        "mutuality": "安全感",
+        "nurturing": "穩定",
+        "respect": "支持",
+        "safety": "被了解",
+        "security": "信任",
+        "stability": "溫暖",
+        "support": "支持",
+        "to_know_and_be_known": "被了解",
+        "to_see_and_be_seen": "被看見",
+        "to_understand_and_be_understood": "被理解",
+        "trust": "信任",
+        "warmth": "溫暖",
+        "physical": "身體福祉",
+        "air": "空氣",
+        "food": "食物",
+        "movement": "運動",
+        "rest": "休息",
+        "sexual_expression": "性",
+        "shelter": "住所",
+        "touch": "觸摸",
+        "water": "水",
+        "honesty": "誠實",
+        "authenticity": "真實",
+        "integrity": "正直",
+        "presence": "當下",
+        "play": "玩耍",
+        "joy": "樂趣",
+        "humor": "幽默",
+        "peace": "和平",
+        "beauty": "美",
+        "communion": "和諧",
+        "ease": "自在",
+        "equality": "平等",
+        "harmony": "和諧",
+        "inspiration": "靈感",
+        "order": "秩序",
+        "autonomy": "自主",
+        "choice": "選擇",
+        "freedom": "自由",
+        "independence": "獨立",
+        "space": "空間",
+        "spontaneity": "自發性",
+        "meaning": "意義",
+        "awareness": "覺察",
+        "celebration_of_life": "慶祝",
+        "challenge": "挑戰",
+        "clarity": "清晰",
+        "competence": "能力",
+        "consciousness": "意識",
+        "contribution": "貢獻",
+        "creativity": "創造力",
+        "discovery": "發現",
+        "efficacy": "效率",
+        "effectiveness": "成效",
+        "growth": "成長",
+        "hope": "希望",
+        "learning": "學習",
+        "mourning": "哀悼",
+        "participation": "參與",
+        "purpose": "目的",
+        "self_expression": "自我表達",
+        "stimulation": "重要性",
+        "to_matter": "重要性",
+        "understanding": "理解"
     },
     "summary": {
         "title": "總結",

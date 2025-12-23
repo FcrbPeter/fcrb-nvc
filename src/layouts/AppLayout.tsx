@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import headerBg from '../assets/header-bg.png';
 
 function AppLayout() {
     const { t, i18n } = useTranslation();
@@ -13,14 +14,23 @@ function AppLayout() {
     return (
         <div className="flex flex-col min-h-screen bg-background">
             {/* Header with Gradient */}
-            <header className="h-80 w-full flex flex-col items-center pt-[60px] text-white text-center bg-gradient-to-br from-[#244e59] via-[#1d9d88] to-[#4fd1c5] relative print:hidden">
-                <div className="absolute top-5 right-5">
-                    <button onClick={toggleLanguage} className="text-white/80 text-sm hover:text-white transition-colors">
+            <header className="h-80 w-full flex flex-col items-center pt-[60px] text-white text-center relative print:hidden overflow-hidden">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <img src={headerBg} alt="" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-teal-900/40" />
+                </div>
+
+                <div className="absolute top-5 right-5 z-20">
+                    <button onClick={toggleLanguage} className="text-white/90 text-sm hover:text-white transition-colors drop-shadow-md">
                         {i18n.language === 'en-US' ? '中文' : 'English'}
                     </button>
                 </div>
-                <h1 className="text-4xl mb-2 font-bold">{t('welcome.title')}</h1>
-                <p className="opacity-90 text-lg">{t('welcome.subtitle')}</p>
+
+                <div className="relative z-10 flex flex-col items-center">
+                    <h1 className="text-4xl mb-2 font-bold drop-shadow-lg">{t('welcome.title')}</h1>
+                    <p className="opacity-95 text-lg drop-shadow-md">{t('welcome.subtitle')}</p>
+                </div>
             </header>
 
             <main className="bg-card text-card-foreground rounded-2xl shadow-md p-12 max-w-[800px] w-[90%] mx-auto -mt-[100px] mb-8 relative z-10 min-h-[400px] print:mt-0 print:shadow-none print:p-0 print:w-full print:max-w-none">
@@ -30,10 +40,10 @@ function AppLayout() {
             <div className="max-w-[800px] w-[90%] mx-auto p-6 bg-blue-50 text-blue-900 rounded-2xl text-sm mb-8 leading-relaxed print:hidden">
                 <h4 className="flex items-center mb-2 font-semibold">
                     <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-700 text-white mr-2 text-xs">i</span>
-                    {t('footer.title')}
+                    {t('tips.what_is_nvc.title')}
                 </h4>
                 <p>
-                    {t('footer.content')}
+                    {t('tips.what_is_nvc.content')}
                 </p>
             </div>
 

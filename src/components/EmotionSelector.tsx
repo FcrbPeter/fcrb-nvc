@@ -63,7 +63,7 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
             <div className="flex flex-col gap-6">
                 {currentCategories.map((cat) => (
                     <div key={cat.category} className="animate-in slide-in-from-bottom-2 fade-in duration-500">
-                        <h3 className="text-base text-slate-400 mb-2 pl-1 font-medium">
+                        <h3 className={`text-base mb-2 pl-1 font-medium ${needState === 'unsatisfied' ? 'text-slate-400' : 'text-rose-400'}`}>
                             {t(`emotions.${cat.category}`)}
                         </h3>
                         <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">

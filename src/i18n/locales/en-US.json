@@ -1,8 +1,8 @@
 {
     "welcome": {
-        "title": "NVC Emotion Selector",
+        "title": "Nonviolent Communication Four Steps",
         "subtitle": "Identify your feelings with Nonviolent Communication",
-        "steps_intro": "Clarify your inner desires in three simple steps.\nObservation → Feelings → Needs",
+        "steps_intro": "Clarify your inner desires in four simple steps.\nObservation → Feelings → Needs → Gratitude",
         "start": "Start"
     },
     "topic": {
@@ -155,9 +155,11 @@
         "save_image": "Save as Image",
         "print": "Print"
     },
-    "footer": {
-        "title": "Why choose emotions?",
-        "content": "In Nonviolent Communication (NVC), emotions are the signal lights to our inner 'needs'. When we feel comfortable (like happy, peaceful), it means needs are met; when uncomfortable (like angry, sad), needs are unmet. Identifying emotions accurately helps us clearly see what we truly value."
+    "tips": {
+        "what_is_nvc": {
+            "title": "What is NVC?",
+            "content": "Non-Violent Communication (NVC) views emotions as signals to inner 'needs'. When we feel pleased, it means needs are met; when we feel uncomfortable, it implies some need is waiting to be met. By clarifying emotions, we can deeply understand our true desires and build more authentic connections."
+        }
     },
     "legal": {
         "disclaimer": "Disclaimer",

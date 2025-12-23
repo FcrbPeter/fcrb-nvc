@@ -2,6 +2,7 @@ import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import headerBg from '../assets/header-bg.png';
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
+import { PageTitleUpdater } from "../components/PageTitleUpdater";
 import { useEffect } from "react";
 
 function AppLayout() {
@@ -17,6 +18,7 @@ function AppLayout() {
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
+            <PageTitleUpdater />
             {/* Header with Gradient */}
             <header className="h-80 w-full flex flex-col items-center pt-[60px] text-white text-center relative print:hidden overflow-hidden">
                 {/* Background Image */}

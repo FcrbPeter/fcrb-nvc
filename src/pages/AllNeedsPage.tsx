@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { needs } from '../data/needs';
 import { X } from 'lucide-react';
@@ -7,8 +7,12 @@ function AllNeedsPage() {
     const { t } = useTranslation();
     const [selectedNeed, setSelectedNeed] = useState<string | null>(null);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
-        <div className="container mx-auto px-4 py-8 max-w-4xl pb-32">
+        <div className="container mx-auto px-4 py-8 max-w-4xl pb-32 animate-in slide-in-from-bottom-5 fade-in duration-500">
             <h1 className="text-3xl font-bold text-center mb-8 text-foreground text-primary">{t('toolbox.needs')}</h1>
 
             <div className="space-y-12">

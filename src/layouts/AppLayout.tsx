@@ -1,15 +1,19 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import headerBg from '../assets/header-bg.png';
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
+import { useEffect } from "react";
 
 function AppLayout() {
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
+    const { lang } = useParams();
 
-    const toggleLanguage = () => {
-        const newLang = i18n.language === 'en-US' ? 'zh-TW' : 'en-US';
-        navigate(`/${newLang}`);
-    };
+    useEffect(() => {
+        if (lang && ['en-US', 'zh-TW'].includes(lang) && i18n.language !== lang) {
+            i18n.changeLanguage(lang);
+        }
+    }, [lang, i18n]);
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
@@ -22,9 +26,7 @@ function AppLayout() {
                 </div>
 
                 <div className="absolute top-5 right-5 z-20">
-                    <button onClick={toggleLanguage} className="text-white/90 text-sm hover:text-white transition-colors drop-shadow-md">
-                        {i18n.language === 'en-US' ? '中文' : 'English'}
-                    </button>
+                    <LanguageSwitcher />
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center">

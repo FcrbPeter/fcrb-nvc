@@ -1,8 +1,4 @@
-import { useTranslation } from 'react-i18next';
-
 function PrivacyPage() {
-    const { t } = useTranslation();
-
     return (
         <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
             <h2 className="mb-5 text-primary text-2xl font-bold">Privacy Policy</h2>

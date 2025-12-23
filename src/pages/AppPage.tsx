@@ -88,7 +88,18 @@ function AppPage() {
   return (
     <>
       {currentView !== 'welcome' && (
-        <Stepper currentStep={getStep()} />
+        <>
+          {currentView !== 'summary' && (
+            <button
+              onClick={handleRestart}
+              className="absolute top-6 right-6 text-sm text-slate-400 hover:text-slate-600 transition-colors print:hidden"
+              aria-label={t('summary.restart')}
+            >
+              {t('summary.restart')}
+            </button>
+          )}
+          <Stepper currentStep={getStep()} />
+        </>
       )}
 
       {currentView === 'welcome' && (

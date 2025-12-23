@@ -12,6 +12,8 @@
         "next": "下一步"
     },
     "emotions": {
+        "title": "感受",
+        "list_title": "感受列表",
         "satisfied": "需要獲得滿足",
         "unsatisfied": "需要未獲滿足",
         "next": "下一步",
@@ -63,6 +65,7 @@
     },
     "needs": {
         "title": "需求",
+        "list_title": "需求列表",
         "subtitle": "你渴望什麼？",
         "next": "總結",
         "connection": "連結",
@@ -175,5 +178,9 @@
         "placeholder_satisfied": "我想說...",
         "placeholder_unsatisfied": "我可以...",
         "next": "查看總結"
+    },
+    "toolbox": {
+        "emotions": "感受列表",
+        "needs": "需求列表"
     }
 }

@@ -3,6 +3,8 @@ import AppPage from './pages/AppPage'
 import AppLayout from './layouts/AppLayout';
 import DisclaimerPage from './pages/DisclaimerPage';
 import PrivacyPage from './pages/PrivacyPage';
+import AllEmotionsPage from './pages/AllEmotionsPage';
+import AllNeedsPage from './pages/AllNeedsPage';
 import AnalyticsTracker from './components/AnalyticsTracker';
 
 // Redirect based on browser language
@@ -26,6 +28,8 @@ function App() {
                     <Route index element={<AppPage />} />
                     <Route path="disclaimer" element={<DisclaimerPage />} />
                     <Route path="privacy" element={<PrivacyPage />} />
+                    <Route path="emotions" element={<AllEmotionsPage />} />
+                    <Route path="needs" element={<AllNeedsPage />} />
                 </Route>
 
                 <Route path="*" element={<RootRedirect />} />

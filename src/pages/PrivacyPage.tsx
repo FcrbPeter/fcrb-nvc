@@ -1,14 +1,7 @@
-import i18n from "@/i18n/i18n";
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from "react-router-dom";
 
 function PrivacyPage() {
     const { t } = useTranslation();
-    const navigate = useNavigate();
-
-    const onBack = () => {
-        navigate('/' + (i18n.language || 'en-US'), { replace: true });
-    };
 
     return (
         <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
@@ -27,12 +20,6 @@ function PrivacyPage() {
                 <h3 className="mt-4 text-lg font-semibold">3. Third-Party Services</h3>
                 <p>We may use basic hosting services (like Firebase Hosting or GitHub Pages) to serve the application files. These services may collect standard server logs (IP addresses, request times) for security and operational purposes. We do not have control over, nor do we use, this data for tracking individual users.</p>
             </div>
-            <button
-                onClick={onBack}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg text-base font-semibold mt-8 transition-colors"
-            >
-                {t('legal.back')}
-            </button>
         </div>
     );
 }

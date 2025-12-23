@@ -28,8 +28,17 @@ function AppLayout() {
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center">
-                    <h1 className="text-4xl mb-2 font-bold drop-shadow-lg">{t('welcome.title')}</h1>
-                    <p className="opacity-95 text-lg drop-shadow-md">{t('welcome.subtitle')}</p>
+                    <button
+                        onClick={() => navigate(`/${i18n.language}`)}
+                        className="text-center group transition-transform active:scale-95"
+                    >
+                        <h1 className="text-4xl mb-2 font-bold drop-shadow-lg group-hover:opacity-90 transition-opacity">
+                            {t('welcome.title')}
+                        </h1>
+                        <p className="opacity-95 text-lg drop-shadow-md group-hover:opacity-100 transition-opacity">
+                            {t('welcome.subtitle')}
+                        </p>
+                    </button>
                 </div>
             </header>
 
@@ -49,6 +58,23 @@ function AppLayout() {
 
             {/* Real Footer */}
             <footer className="text-center p-4 mt-auto text-xs opacity-70 w-full print:hidden">
+                <div className="max-w-xs mx-auto mb-6">
+                    <div className="flex justify-center space-x-4">
+                        <button
+                            onClick={() => navigate(`/${i18n.language}/emotions`)}
+                            className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-600 rounded-xl shadow-sm border border-slate-100 transition-all text-sm font-medium hover:shadow-md"
+                        >
+                            {t('toolbox.emotions')}
+                        </button>
+                        <button
+                            onClick={() => navigate(`/${i18n.language}/needs`)}
+                            className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-600 rounded-xl shadow-sm border border-slate-100 transition-all text-sm font-medium hover:shadow-md"
+                        >
+                            {t('toolbox.needs')}
+                        </button>
+                    </div>
+                </div>
+
                 <p className="mb-2">
                     <button onClick={() => navigate(`/${i18n.language}/disclaimer`)} className="mr-4 opacity-80 decoration-1 underline hover:opacity-100">
                         {t('legal.disclaimer')}

@@ -12,6 +12,8 @@
         "next": "Next"
     },
     "emotions": {
+        "title": "Emotions",
+        "list_title": "Emotions List",
         "satisfied": "Needs Satisfied",
         "unsatisfied": "Needs Not Satisfied",
         "next": "Next",
@@ -63,6 +65,7 @@
     },
     "needs": {
         "title": "Needs",
+        "list_title": "Needs List",
         "subtitle": "What do you need?",
         "next": "Summary",
         "connection": "Connection",
@@ -175,5 +178,9 @@
         "placeholder_satisfied": "I want to say...",
         "placeholder_unsatisfied": "I can...",
         "next": "See Summary"
+    },
+    "toolbox": {
+        "emotions": "Emotions List",
+        "needs": "Needs List"
     }
 }

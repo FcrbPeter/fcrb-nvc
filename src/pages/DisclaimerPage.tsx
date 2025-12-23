@@ -1,14 +1,7 @@
-import i18n from "@/i18n/i18n";
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from "react-router-dom";
 
 function DisclaimerPage() {
     const { t } = useTranslation();
-    const navigate = useNavigate();
-
-    const onBack = () => {
-        navigate('/' + (i18n.language || 'en-US'), { replace: true });
-    };
 
     return (
         <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
@@ -23,12 +16,6 @@ function DisclaimerPage() {
                 <h3 className="mt-4 text-lg font-semibold">Emergency</h3>
                 <p>If you think you may have a medical emergency or are in crisis, call your doctor or your local emergency number immediately.</p>
             </div>
-            <button
-                onClick={onBack}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg text-base font-semibold mt-8 transition-colors"
-            >
-                {t('legal.back')}
-            </button>
         </div>
     );
 }

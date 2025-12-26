@@ -4,6 +4,7 @@ import { Github, Mail } from "lucide-react";
 import headerBg from '../assets/header-bg.png';
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { PageTitleUpdater } from "../components/PageTitleUpdater";
+import { APP_CONSTANTS } from "../data/constants";
 import { useEffect } from "react";
 
 function AppLayout() {
@@ -84,14 +85,24 @@ function AppLayout() {
                     <button onClick={() => navigate(`/${i18n.language}/disclaimer`)} className="mr-4 opacity-80 decoration-1 underline hover:opacity-100">
                         {t('legal.disclaimer')}
                     </button>
-                    <button onClick={() => navigate(`/${i18n.language}/privacy`)} className="opacity-80 decoration-1 underline hover:opacity-100">
+                    <button onClick={() => navigate(`/${i18n.language}/privacy`)} className="mr-4 opacity-80 decoration-1 underline hover:opacity-100">
                         {t('legal.privacy')}
                     </button>
+
+
+                    <a
+                        href={APP_CONSTANTS.FEEDBACK_FORM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-80 decoration-1 underline hover:opacity-100"
+                    >
+                        {t('legal.feedback_link')}
+                    </a>
                 </p>
 
                 <div className="flex justify-center space-x-6 mb-6">
                     <a
-                        href="https://github.com/FcrbPeter/fcrb-nvc"
+                        href={APP_CONSTANTS.GITHUB_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-slate-500 hover:text-slate-700 transition-colors"
@@ -100,7 +111,7 @@ function AppLayout() {
                         <Github size={20} />
                     </a>
                     <a
-                        href="mailto:peter@fcrbpeter.com"
+                        href={`mailto:${APP_CONSTANTS.CONTACT_EMAIL}`}
                         className="text-slate-500 hover:text-slate-700 transition-colors"
                         title="Email"
                     >

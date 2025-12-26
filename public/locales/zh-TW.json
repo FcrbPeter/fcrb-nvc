@@ -167,6 +167,7 @@
     "legal": {
         "disclaimer": "免責聲明",
         "privacy": "隱私權政策",
+        "feedback_link": "意見回饋",
         "back": "返回"
     },
     "feedback": {
@@ -178,6 +179,13 @@
         "placeholder_satisfied": "我想說...",
         "placeholder_unsatisfied": "我可以...",
         "next": "查看總結"
+    },
+    "feedback_popup": {
+        "title": "喜歡這個應用程式嗎？",
+        "message": "我們希望能聽到您的回饋，讓這個工具變得更好。",
+        "dismiss": "暫時不要",
+        "action": "提供回饋",
+        "close": "關閉"
     },
     "toolbox": {
         "emotions": "感受列表",

@@ -10,6 +10,9 @@ import Stepper from '../components/Stepper';
 import { emotions as emotionsData } from '../data/emotions';
 import { logEvent } from '../utils/analytics';
 
+import FeedbackPopup from '../components/FeedbackPopup';
+import { APP_CONSTANTS } from '../data/constants';
+
 function AppPage() {
   const { t, i18n } = useTranslation();
   const { lang } = useParams();
@@ -20,6 +23,7 @@ function AppPage() {
   const [emotions, setEmotions] = useState<string[]>([]);
   const [needs, setNeeds] = useState<string[]>([]);
   const [feedback, setFeedback] = useState('');
+  const [isFeedbackPopupOpen, setIsFeedbackPopupOpen] = useState(false);
 
   // Determine if satisfied based on emotions
   const isSatisfied = useMemo(() => {
@@ -64,6 +68,13 @@ function AppPage() {
     setFeedback(inputFeedback);
     setCurrentView('summary');
     logEvent({ category: 'Flow', action: 'Complete' });
+
+    // Show feedback popup if not seen in this session
+    const hasSeenFeedback = sessionStorage.getItem('nvc_feedback_seen');
+    if (!hasSeenFeedback) {
+      // Small delay to let the summary load first
+      setTimeout(() => setIsFeedbackPopupOpen(true), 1500);
+    }
   };
 
   const handleRestart = () => {
@@ -72,6 +83,11 @@ function AppPage() {
     setNeeds([]);
     setFeedback('');
     setCurrentView('welcome');
+  };
+
+  const handleCloseFeedbackPopup = () => {
+    setIsFeedbackPopupOpen(false);
+    sessionStorage.setItem('nvc_feedback_seen', 'true');
   };
 
   const getStep = () => {
@@ -146,6 +162,12 @@ function AppPage() {
           onRestart={handleRestart}
         />
       )}
+
+      <FeedbackPopup
+        isOpen={isFeedbackPopupOpen}
+        onClose={handleCloseFeedbackPopup}
+        feedbackUrl={APP_CONSTANTS.FEEDBACK_FORM_URL}
+      />
     </>
   );
 }

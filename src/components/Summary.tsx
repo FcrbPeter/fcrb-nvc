@@ -86,91 +86,77 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
             <div className="mb-8 print:p-0">
                 <div ref={summaryCardRef}>
                     <div className="bg-card p-6 rounded-2xl shadow-md text-left bg-white print:shadow-none print:border print:border-slate-200">
-                        <p className="text-lg mb-4 text-foreground leading-relaxed italic">
-                            "{topic}"
-                        </p>
+                        {/* Combined Sharing Message Section */}
+                        <div className="text-slate-700 leading-relaxed text-xl">
+                            {sharingMessage}
+                        </div>
 
-                        <hr className="border-t border-border my-4" />
+                        <hr className="border-t border-slate-100 my-6" />
 
-                        <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
-                            {t('summary.because')}
-                        </p>
+                        {/* Topic Section */}
+                        <div className="mb-6">
+                            <p className="text-lg text-foreground leading-relaxed italic font-medium">
+                                "{topic}"
+                            </p>
+                        </div>
 
-                        <div className="flex flex-wrap gap-2 mb-6">
-                            {emotions.map((emotionKey, index) => {
-                                // Dynamic class based on satisfied state
-                                const containerClass = isSatisfied
-                                    ? "flex items-center gap-2 bg-pink-50 px-3 py-1.5 rounded-lg text-sm font-medium text-pink-700 shadow-sm"
-                                    : "flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-lg text-sm font-medium text-foreground";
+                        {/* Emotions Section */}
+                        <div className="mb-6">
+                            <p className="text-muted-foreground mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
+                                {t('summary.because')}
+                            </p>
+                            <div className="flex flex-wrap gap-2">
+                                {emotions.map((emotionKey, index) => {
+                                    const containerClass = isSatisfied
+                                        ? "flex items-center gap-2 bg-pink-50 px-3 py-1.5 rounded-lg text-sm font-medium text-pink-700 shadow-sm border border-pink-100"
+                                        : "flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-700 border border-slate-200";
 
-                                const badgeClass = isSatisfied
-                                    ? "flex items-center justify-center w-5 h-5 bg-pink-100 rounded-full text-xs text-pink-600"
-                                    : "flex items-center justify-center w-5 h-5 bg-slate-200 rounded-full text-xs text-slate-600";
+                                    const badgeClass = isSatisfied
+                                        ? "flex items-center justify-center w-5 h-5 bg-pink-100 rounded-full text-[10px] text-pink-600 font-bold"
+                                        : "flex items-center justify-center w-5 h-5 bg-slate-200 rounded-full text-[10px] text-slate-600 font-bold";
 
-                                return (
-                                    <div key={emotionKey} className={containerClass}>
-                                        <span className={badgeClass}>
-                                            {index + 1}
-                                        </span>
-                                        {t(`emotions.${emotionKey}`)}
-                                    </div>
-                                );
-                            })}
+                                    return (
+                                        <div key={emotionKey} className={containerClass}>
+                                            <span className={badgeClass}>
+                                                {index + 1}
+                                            </span>
+                                            {t(`emotions.${emotionKey}`)}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
 
                         {/* Needs Section */}
                         {needs && needs.length > 0 && (
-                            <>
-                                <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
+                            <div className="mb-8">
+                                <p className="text-muted-foreground mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
                                     {t('summary.my_needs')}
                                 </p>
-                                <div className="flex flex-wrap gap-2 mb-6">
+                                <div className="flex flex-wrap gap-2">
                                     {needs.map((needKey, index) => (
-                                        <div key={needKey} className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 rounded-lg text-sm font-medium text-emerald-700">
-                                            <span className="flex items-center justify-center w-5 h-5 bg-emerald-100 rounded-full text-xs text-emerald-600">
+                                        <div key={needKey} className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 rounded-lg text-sm font-medium text-emerald-700 border border-emerald-100 shadow-sm">
+                                            <span className="flex items-center justify-center w-5 h-5 bg-emerald-100 rounded-full text-[10px] text-emerald-600 font-bold">
                                                 {index + 1}
                                             </span>
                                             {t(`needs.${needKey}`)}
                                         </div>
                                     ))}
                                 </div>
-                            </>
+                            </div>
                         )}
 
                         {/* Feedback Section */}
                         {feedback && feedback.trim().length > 0 && (
-                            <>
-                                <hr className="border-t border-border my-4" />
-                                <p className="text-muted-foreground mb-2 text-sm font-medium uppercase tracking-wide">
+                            <div className="mt-6 pt-2">
+                                <p className="text-muted-foreground mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
                                     {t('feedback.title')}
                                 </p>
-                                <div className="text-foreground whitespace-pre-line leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <div className="text-slate-600 whitespace-pre-line leading-relaxed text-sm pl-1">
                                     {feedback}
                                 </div>
-                            </>
+                            </div>
                         )}
-                    </div>
-                </div>
-
-                {/* Sharing Message Section - Outside the capture area */}
-                <div className="mt-8 text-left bg-blue-50/50 border border-blue-100 rounded-2xl p-6">
-                    <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-sm font-semibold uppercase tracking-wide text-blue-800">
-                            {t('summary.share_title')}
-                        </h3>
-                        <button
-                            onClick={handleCopy}
-                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${copied
-                                    ? "bg-green-100 text-green-700 ring-1 ring-green-200"
-                                    : "bg-white text-slate-600 shadow-sm hover:text-blue-600 hover:shadow ring-1 ring-slate-200"
-                                }`}
-                        >
-                            {copied ? <Check size={14} /> : <Copy size={14} />}
-                            {copied ? t('summary.copied') : t('summary.copy')}
-                        </button>
-                    </div>
-                    <div className="bg-white p-4 rounded-xl text-slate-700 leading-relaxed shadow-sm border border-blue-100/50">
-                        {sharingMessage}
                     </div>
                 </div>
             </div>

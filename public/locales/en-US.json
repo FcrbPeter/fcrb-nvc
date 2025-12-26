@@ -67,7 +67,7 @@
         "title": "Needs",
         "list_title": "Needs List",
         "subtitle": "What do you need?",
-        "next": "Summary",
+        "next": "Next",
         "connection": "Connection",
         "acceptance": "Acceptance",
         "affection": "Affection",
@@ -156,7 +156,10 @@
         "my_needs": "My needs are...",
         "restart": "Start Over",
         "save_image": "Save as Image",
-        "print": "Print"
+        "print": "Print",
+        "share_title": "Sharing Message",
+        "copy": "Copy",
+        "copied": "Copied!"
     },
     "tips": {
         "what_is_nvc": {

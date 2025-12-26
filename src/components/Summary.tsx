@@ -1,7 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useRef } from 'react';
+import { useRef, useMemo, useState } from 'react';
 import { toPng } from 'html-to-image';
 import { logEvent } from '../utils/analytics';
+import { generateNvcMessage } from '../utils/nvcFormatter';
+import { Copy, Check } from 'lucide-react';
 
 interface SummaryProps {
     topic: string;
@@ -13,8 +15,34 @@ interface SummaryProps {
 }
 
 function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: SummaryProps) {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const summaryCardRef = useRef<HTMLDivElement>(null);
+    const [copied, setCopied] = useState(false);
+
+    const sharingMessage = useMemo(() => {
+        // Map emotion/need keys to translated strings
+        const translatedEmotions = emotions.map(k => t(`emotions.${k}`));
+        const translatedNeeds = needs.map(k => t(`needs.${k}`));
+
+        return generateNvcMessage(
+            i18n.language,
+            topic,
+            translatedEmotions,
+            translatedNeeds,
+            feedback
+        );
+    }, [i18n.language, topic, emotions, needs, feedback, t]);
+
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(sharingMessage);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+            logEvent({ category: 'Engagement', action: 'Copy Sharing Message' });
+        } catch (err) {
+            console.error('Failed to copy text:', err);
+        }
+    };
 
     const handleSaveImage = async () => {
         if (summaryCardRef.current) {
@@ -121,6 +149,28 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                                 </div>
                             </>
                         )}
+                    </div>
+                </div>
+
+                {/* Sharing Message Section - Outside the capture area */}
+                <div className="mt-8 text-left bg-blue-50/50 border border-blue-100 rounded-2xl p-6">
+                    <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-sm font-semibold uppercase tracking-wide text-blue-800">
+                            {t('summary.share_title')}
+                        </h3>
+                        <button
+                            onClick={handleCopy}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${copied
+                                    ? "bg-green-100 text-green-700 ring-1 ring-green-200"
+                                    : "bg-white text-slate-600 shadow-sm hover:text-blue-600 hover:shadow ring-1 ring-slate-200"
+                                }`}
+                        >
+                            {copied ? <Check size={14} /> : <Copy size={14} />}
+                            {copied ? t('summary.copied') : t('summary.copy')}
+                        </button>
+                    </div>
+                    <div className="bg-white p-4 rounded-xl text-slate-700 leading-relaxed shadow-sm border border-blue-100/50">
+                        {sharingMessage}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Github, Mail } from "lucide-react";
 import headerBg from '../assets/header-bg.png';
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { PageTitleUpdater } from "../components/PageTitleUpdater";
@@ -79,7 +80,7 @@ function AppLayout() {
                     </div>
                 </div>
 
-                <p className="mb-2">
+                <p className="mb-4">
                     <button onClick={() => navigate(`/${i18n.language}/disclaimer`)} className="mr-4 opacity-80 decoration-1 underline hover:opacity-100">
                         {t('legal.disclaimer')}
                     </button>
@@ -87,6 +88,26 @@ function AppLayout() {
                         {t('legal.privacy')}
                     </button>
                 </p>
+
+                <div className="flex justify-center space-x-6 mb-6">
+                    <a
+                        href="https://github.com/FcrbPeter/fcrb-nvc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-500 hover:text-slate-700 transition-colors"
+                        title="GitHub"
+                    >
+                        <Github size={20} />
+                    </a>
+                    <a
+                        href="mailto:peter@fcrbpeter.com"
+                        className="text-slate-500 hover:text-slate-700 transition-colors"
+                        title="Email"
+                    >
+                        <Mail size={20} />
+                    </a>
+                </div>
+
                 <p>
                     &copy; 2025 FcrbPeter
                 </p>

@@ -4,7 +4,7 @@ import { Github, Mail } from "lucide-react";
 import headerBg from '../assets/header-bg.png';
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { PageTitleUpdater } from "../components/PageTitleUpdater";
-import { APP_CONSTANTS } from "../data/constants";
+import { APP_CONSTANTS, APP_VERSION } from "../data/constants";
 import { useEffect } from "react";
 
 function AppLayout() {
@@ -119,9 +119,14 @@ function AppLayout() {
                     </a>
                 </div>
 
-                <p>
-                    &copy; 2025 FcrbPeter
-                </p>
+                <div>
+                    <p>
+                        &copy; 2025 FcrbPeter
+                    </p>
+                    <p className="text-[10px] text-slate-400 font-mono">
+                        {APP_VERSION}
+                    </p>
+                </div>
             </footer>
         </div>
     );

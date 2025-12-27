@@ -1,9 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { useRef, useMemo, useState } from 'react';
+import { useRef, useMemo } from 'react';
 import { toPng } from 'html-to-image';
-import { logEvent } from '../utils/analytics';
 import { generateNvcMessage } from '../utils/nvcFormatter';
-import { Copy, Check } from 'lucide-react';
+import { logEvent } from '@/utils/analytics';
 
 interface SummaryProps {
     topic: string;
@@ -17,7 +16,6 @@ interface SummaryProps {
 function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: SummaryProps) {
     const { t, i18n } = useTranslation();
     const summaryCardRef = useRef<HTMLDivElement>(null);
-    const [copied, setCopied] = useState(false);
 
     const sharingMessage = useMemo(() => {
         // Map emotion/need keys to translated strings
@@ -32,17 +30,6 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
             feedback
         );
     }, [i18n.language, topic, emotions, needs, feedback, t]);
-
-    const handleCopy = async () => {
-        try {
-            await navigator.clipboard.writeText(sharingMessage);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-            logEvent({ category: 'Engagement', action: 'Copy Sharing Message' });
-        } catch (err) {
-            console.error('Failed to copy text:', err);
-        }
-    };
 
     const handleSaveImage = async () => {
         if (summaryCardRef.current) {
@@ -81,20 +68,20 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
 
     return (
         <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 text-center">
-            <h2 className="mb-6 text-2xl font-bold">{t('summary.title')}</h2>
+            {/* <h2 className="mb-6 text-2xl font-bold">{t('summary.title')}</h2> */}
+            <div className="text-slate-700 leading-relaxed text-xl pb-8">
+                {sharingMessage}
+            </div>
 
             <div className="mb-8 print:p-0">
                 <div ref={summaryCardRef}>
                     <div className="bg-card p-6 rounded-2xl shadow-md text-left bg-white print:shadow-none print:border print:border-slate-200">
-                        {/* Combined Sharing Message Section */}
-                        <div className="text-slate-700 leading-relaxed text-xl">
-                            {sharingMessage}
-                        </div>
-
-                        <hr className="border-t border-slate-100 my-6" />
 
                         {/* Topic Section */}
                         <div className="mb-6">
+                            <p className="text-muted-foreground mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
+                                {t('summary.when')}
+                            </p>
                             <p className="text-lg text-foreground leading-relaxed italic font-medium">
                                 "{topic}"
                             </p>
@@ -150,9 +137,9 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                         {feedback && feedback.trim().length > 0 && (
                             <div className="mt-6 pt-2">
                                 <p className="text-muted-foreground mb-3 text-sm font-bold uppercase tracking-wider text-slate-400">
-                                    {t('feedback.title')}
+                                    {t('summary.so_my_actions')}
                                 </p>
-                                <div className="text-slate-600 whitespace-pre-line leading-relaxed text-sm pl-1">
+                                <div className="text-slate-600 whitespace-pre-line leading-relaxed pl-1">
                                     {feedback}
                                 </div>
                             </div>

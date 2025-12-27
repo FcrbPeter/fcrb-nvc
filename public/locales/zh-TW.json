@@ -151,9 +151,10 @@
         "understanding": "理解"
     },
     "summary": {
-        "title": "總結",
-        "because": "我會有這些感受，是因為...",
-        "my_needs": "我的需求是...",
+        "when": "當我...",
+        "because": "我有這些感受...",
+        "my_needs": "因為我的需求是...",
+        "so_my_actions": "所以我想...",
         "restart": "重新開始",
         "save_image": "存為圖片",
         "print": "列印",

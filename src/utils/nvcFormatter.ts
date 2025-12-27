@@ -17,16 +17,18 @@ export const generateNvcMessage = (
         return `${rest.join(separator)}${lastSeparator}${last}`;
     };
 
-    const cleanFeedback = feedback?.trim() ? ` ${feedback.trim()}` : '';
+    const cleanFeedback = feedback?.trim() ? `${feedback.trim()}` : '';
 
     if (language === 'zh-TW') {
         const emotionsStr = joinList(emotions, '、');
         const needsStr = joinList(needs, '、');
-        return `當 ${topic} 時，我感到 ${emotionsStr}，因為我需要 ${needsStr}。 ${cleanFeedback}${cleanFeedback ? '。' : ''}`;
+        const feedbackStr = cleanFeedback ? `所以我想 ${cleanFeedback} 。` : '';
+        return `當 ${topic} 時，我感到 ${emotionsStr}，因為我需要 ${needsStr}。 ${feedbackStr}`;
     } else {
         // Default to English
         const emotionsStr = joinList(emotions, ', ', ' and ');
         const needsStr = joinList(needs, ', ', ' and ');
-        return `When ${topic}, I feel ${emotionsStr} because I need ${needsStr}. ${cleanFeedback}${cleanFeedback ? '.' : ''}`;
+        const feedbackStr = cleanFeedback ? `so I want to ${cleanFeedback}.` : '';
+        return `When ${topic}, I feel ${emotionsStr} because I need ${needsStr}. ${feedbackStr}`;
     }
 };

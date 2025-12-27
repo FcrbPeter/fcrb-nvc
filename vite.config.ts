@@ -7,7 +7,7 @@ import { execSync } from 'child_process'
 const getCommitHash = () => {
   try {
     return execSync('git rev-parse --short=10 HEAD').toString().trim();
-  } catch (e) {
+  } catch {
     return 'unknown';
   }
 };
@@ -15,7 +15,7 @@ const getCommitHash = () => {
 const getGitTag = () => {
   try {
     return execSync('git describe --tags --abbrev=0').toString().trim();
-  } catch (e) {
+  } catch {
     return `v${process.env.npm_package_version || '0.0.0'}`;
   }
 };

@@ -6,12 +6,6 @@ const TypewriterText = ({ text, onComplete }: { text: string; onComplete?: () =>
     const indexRef = useRef(0);
 
     useEffect(() => {
-        // Reset if text changes
-        setDisplayedText('');
-        indexRef.current = 0;
-    }, [text]);
-
-    useEffect(() => {
         const intervalId = setInterval(() => {
             if (indexRef.current < text.length) {
                 setDisplayedText((prev) => prev + text.charAt(indexRef.current));

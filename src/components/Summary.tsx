@@ -19,12 +19,10 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
     const summaryCardRef = useRef<HTMLDivElement>(null);
 
     // Animation stages: 'init' -> 'typing' -> 'card' -> 'buttons'
-    const [animationStage, setAnimationStage] = useState<'init' | 'typing' | 'card' | 'buttons'>('init');
+    const [animationStage, setAnimationStage] = useState<'init' | 'typing' | 'card' | 'buttons'>('typing');
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        // Start typing animation on mount
-        setAnimationStage('typing');
     }, []);
 
     const sharingMessage = useMemo(() => {
@@ -118,6 +116,7 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
             <div className="text-slate-700 leading-relaxed text-xl mb-4">
                 {animationStage !== 'init' && (
                     <TypewriterText
+                        key={sharingMessage}
                         text={sharingMessage}
                         onComplete={handleTypingComplete}
                     />

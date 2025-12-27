@@ -1,8 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
 import { toPng } from 'html-to-image';
 import { generateNvcMessage } from '../utils/nvcFormatter';
 import { logEvent } from '@/utils/analytics';
+import TypewriterText from './TypewritterText';
 
 interface SummaryProps {
     topic: string;
@@ -17,6 +18,14 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
     const { t, i18n } = useTranslation();
     const summaryCardRef = useRef<HTMLDivElement>(null);
 
+    // Animation stages: 'init' -> 'typing' -> 'card' -> 'buttons'
+    const [animationStage, setAnimationStage] = useState<'init' | 'typing' | 'card' | 'buttons'>('init');
+
+    useEffect(() => {
+        // Start typing animation on mount
+        setAnimationStage('typing');
+    }, []);
+
     const sharingMessage = useMemo(() => {
         // Map emotion/need keys to translated strings
         const translatedEmotions = emotions.map(k => t(`emotions.${k}`));
@@ -30,6 +39,25 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
             feedback
         );
     }, [i18n.language, topic, emotions, needs, feedback, t]);
+
+    const handleTypingComplete = useCallback(() => {
+        // Slight delay before showing the card
+        setTimeout(() => {
+            setAnimationStage((prev) => {
+                // Only advance if we are in typing stage, to prevent resetting if called multiple times
+                if (prev === 'typing') return 'card';
+                return prev;
+            });
+            // Slight delay before showing buttons
+            setTimeout(() => {
+                setAnimationStage((prev) => {
+                    // Only advance to buttons if we are in card stage
+                    if (prev === 'card') return 'buttons';
+                    return prev;
+                });
+            }, 600);
+        }, 300);
+    }, []);
 
     const handleSaveImage = async () => {
         if (summaryCardRef.current) {
@@ -67,13 +95,21 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
     };
 
     return (
-        <div className="animate-in slide-in-from-bottom-5 fade-in duration-500 text-center">
-            {/* <h2 className="mb-6 text-2xl font-bold">{t('summary.title')}</h2> */}
-            <div className="text-slate-700 leading-relaxed text-xl pb-8">
-                {sharingMessage}
+        <div className="text-center">
+            {/* sharing message */}
+            <div className="text-slate-700 leading-relaxed text-xl mb-4">
+                {animationStage !== 'init' && (
+                    <TypewriterText
+                        text={sharingMessage}
+                        onComplete={handleTypingComplete}
+                    />
+                )}
             </div>
 
-            <div className="mb-8 print:p-0">
+            <div className={`mb-8 print:p-0 transition-all duration-700 transform ${['card', 'buttons'].includes(animationStage)
+                ? 'translate-y-0 opacity-100'
+                : 'translate-y-10 opacity-0'
+                }`}>
                 <div ref={summaryCardRef}>
                     <div className="bg-card p-6 rounded-2xl shadow-md text-left bg-white print:shadow-none print:border print:border-slate-200">
 
@@ -148,7 +184,10 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                 </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 print:hidden">
+            <div className={`flex flex-col sm:flex-row justify-center gap-4 print:hidden transition-all duration-700 transform ${animationStage === 'buttons'
+                ? 'translate-y-0 opacity-100'
+                : 'translate-y-10 opacity-0'
+                }`}>
                 <button
                     onClick={handleSaveImage}
                     className="bg-emerald-600 text-white px-6 py-3 rounded-xl text-base font-medium hover:bg-emerald-700 transition-colors shadow-sm"

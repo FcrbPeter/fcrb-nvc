@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useRef, useMemo, useState, useEffect, useCallback } from 'react';
-import { toPng } from 'html-to-image';
+import { toBlob } from 'html-to-image';
 import { generateNvcMessage } from '../utils/nvcFormatter';
 import { logEvent } from '@/utils/analytics';
 import TypewriterText from './TypewritterText';
@@ -22,6 +22,7 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
     const [animationStage, setAnimationStage] = useState<'init' | 'typing' | 'card' | 'buttons'>('init');
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         // Start typing animation on mount
         setAnimationStage('typing');
     }, []);
@@ -59,7 +60,7 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
         }, 300);
     }, []);
 
-    const handleSaveImage = async () => {
+    const handleShare = async () => {
         if (summaryCardRef.current) {
             try {
                 const element = summaryCardRef.current;
@@ -68,7 +69,7 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                 const width = element.offsetWidth + (padding * 2);
                 const height = element.offsetHeight + (padding * 2);
 
-                const dataUrl = await toPng(element, {
+                const blob = await toBlob(element, {
                     cacheBust: true,
                     width: width,
                     height: height,
@@ -83,13 +84,30 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                         justifyContent: 'center'
                     }
                 });
-                const link = document.createElement('a');
-                link.download = `nvc-summary-${new Date().toISOString().split('T')[0]}.png`;
-                link.href = dataUrl;
-                link.click();
-                logEvent({ category: 'Engagement', action: 'Save Image' });
+
+                if (blob) {
+                    const file = new File([blob], `nvc-summary-${new Date().toISOString().split('T')[0]}.png`, { type: 'image/png' });
+                    const shareData = {
+                        files: [file],
+                        title: t('summary.share_title'),
+                        text: sharingMessage
+                    };
+
+                    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+                        await navigator.share(shareData);
+                        logEvent({ category: 'Engagement', action: 'Share Image' });
+                    } else {
+                        // Fallback to specific download
+                        const link = document.createElement('a');
+                        link.download = file.name;
+                        link.href = URL.createObjectURL(blob);
+                        link.click();
+                        URL.revokeObjectURL(link.href);
+                        logEvent({ category: 'Engagement', action: 'Download Image (Fallback)' });
+                    }
+                }
             } catch (err) {
-                console.error('Failed to save image:', err);
+                console.error('Failed to share/save image:', err);
             }
         }
     };
@@ -189,10 +207,10 @@ function Summary({ topic, emotions, needs, feedback, isSatisfied, onRestart }: S
                 : 'translate-y-10 opacity-0'
                 }`}>
                 <button
-                    onClick={handleSaveImage}
+                    onClick={handleShare}
                     className="bg-emerald-600 text-white px-6 py-3 rounded-xl text-base font-medium hover:bg-emerald-700 transition-colors shadow-sm"
                 >
-                    {t('summary.save_image')}
+                    {t('summary.share_image')}
                 </button>
                 <button
                     onClick={onRestart}

@@ -89,7 +89,6 @@ function AppLayout() {
                         {t('legal.privacy')}
                     </button>
 
-
                     <a
                         href={APP_CONSTANTS.FEEDBACK_FORM_URL}
                         target="_blank"
@@ -100,7 +99,17 @@ function AppLayout() {
                     </a>
                 </p>
 
-                <div className="flex justify-center space-x-6 mb-6">
+                <div className="flex flex-row justify-center items-center space-x-6">
+                    <div className="flex flex-col text-left">
+                        <p>
+                            &copy; 2025 FcrbPeter
+                        </p>
+                        <p className="text-[10px] text-slate-400 font-mono">
+                            {APP_VERSION}
+                        </p>
+                    </div>
+
+                    {/* <div className="flex justify-center space-x-6 mb-6"> */}
                     <a
                         href={APP_CONSTANTS.GITHUB_URL}
                         target="_blank"
@@ -117,18 +126,10 @@ function AppLayout() {
                     >
                         <Mail size={20} />
                     </a>
+                    {/* </div> */}
                 </div>
-
-                <div>
-                    <p>
-                        &copy; 2025 FcrbPeter
-                    </p>
-                    <p className="text-[10px] text-slate-400 font-mono">
-                        {APP_VERSION}
-                    </p>
-                </div>
-            </footer>
-        </div>
+            </footer >
+        </div >
     );
 }
 

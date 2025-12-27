@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { needs } from '../data/needs';
 
@@ -13,6 +13,10 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
 
     const MAX_SELECTION = 3;
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const toggleNeed = (key: string) => {
         if (selectedNeeds.includes(key)) {
             setSelectedNeeds(selectedNeeds.filter(n => n !== key));
@@ -26,8 +30,9 @@ function NeedSelector({ onNext, initialSelection }: NeedSelectorProps) {
     return (
         <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
             <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-foreground mb-1">{t('needs.title')}</h2>
-                <p className="text-slate-500">{t('needs.subtitle')}</p>
+                <p className="text-2xl text-foreground">
+                    {t('needs.title')}
+                </p>
             </div>
 
             <div className="flex flex-col gap-6">

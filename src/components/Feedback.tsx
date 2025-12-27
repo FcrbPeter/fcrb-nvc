@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface FeedbackProps {
@@ -10,6 +10,10 @@ interface FeedbackProps {
 function Feedback({ onNext, initialFeedback, isSatisfied }: FeedbackProps) {
     const { t } = useTranslation();
     const [feedback, setFeedback] = useState(initialFeedback);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const handleSubmit = () => {
         onNext(feedback);

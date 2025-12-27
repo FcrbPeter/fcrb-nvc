@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { emotions } from '../data/emotions';
 // import './EmotionSelector.css'; // Removed
@@ -17,6 +17,10 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
 
     const currentCategories = emotions[needState];
     const MAX_SELECTION = 3;
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const toggleEmotion = (key: string) => {
         if (selectedEmotions.includes(key)) {
@@ -37,6 +41,12 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
 
     return (
         <div className="animate-in slide-in-from-bottom-5 fade-in duration-500">
+            <div className="flex justify-center mb-6">
+                <p className="text-foreground text-2xl">
+                    {t('emotions.title')}
+                </p>
+            </div>
+
             {/* Tabs */}
             <div className="flex mb-6 bg-slate-100 p-1 rounded-full shadow-inner relative">
                 <button
@@ -66,13 +76,13 @@ function EmotionSelector({ onNext, initialSelection }: EmotionSelectorProps) {
                         <h3 className={`text-base mb-2 pl-1 font-medium ${needState === 'unsatisfied' ? 'text-slate-400' : 'text-rose-400'}`}>
                             {t(`emotions.${cat.category}`)}
                         </h3>
-                        <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-3">
+                        <div className="grid grid-cols-[repeat(auto-fit,minmax(90px,1fr))] gap-3">
                             {cat.items.map((key) => {
                                 const selectionIndex = selectedEmotions.indexOf(key);
                                 const isSelected = selectionIndex !== -1;
                                 const isDisabled = !isSelected && selectedEmotions.length >= MAX_SELECTION;
 
-                                let chipClass = "flex items-center justify-center py-3 px-4 rounded-xl border text-sm transition-all duration-200 w-full text-center min-h-[48px] cursor-pointer relative overflow-hidden focus:outline-none ";
+                                let chipClass = "flex items-center justify-center py-3 px-3 rounded-xl border text-sm transition-all duration-200 w-full text-center min-h-[48px] cursor-pointer relative overflow-hidden focus:outline-none ";
 
                                 if (isSelected) {
                                     chipClass += "border-transparent text-white shadow-md -translate-y-[1px] font-medium ";

@@ -4,7 +4,7 @@ function PrivacyPage() {
             <h2 className="mb-5 text-primary text-2xl font-bold">Privacy Policy</h2>
             <div className="text-left leading-relaxed text-foreground space-y-4">
                 <p><strong>Last Updated: 2025</strong></p>
-                <p>Your privacy is important to us. It is the policy of the NVC Emotion Selector project to respect your privacy regarding any information we may collect from you across our application.</p>
+                <p>Your privacy is important to us. It is the policy of the NVC four steps project to respect your privacy regarding any information we may collect from you across our application.</p>
 
                 <h3 className="mt-4 text-lg font-semibold">1. Information We Collect</h3>
                 <p><strong>We do not collect any personal information.</strong></p>

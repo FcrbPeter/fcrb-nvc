@@ -1,75 +1,30 @@
 export const needs = [
     {
-        category: 'connection',
+        category: 'protection',
+        items: [
+            'survival',
+            'health',
+            'safety',
+            'respect',
+            'sustenance',
+            'stability',
+            'vitality',
+            'rest',
+            'play'
+        ]
+    },
+    {
+        category: 'community',
         items: [
             'acceptance',
-            'affection',
-            'appreciation',
-            'belonging',
-            'cooperation',
-            'communication',
-            'closeness',
-            'community',
-            'companionship',
-            'compassion',
-            'consideration',
-            'consistency',
-            'empathy',
-            'inclusion',
-            'intimacy',
-            'love',
-            'mutuality',
-            'nurturing',
-            'respect',
-            'safety',
-            'security',
-            'stability',
+            'understanding',
+            'connection',
             'support',
-            'to_know_and_be_known',
-            'to_see_and_be_seen',
-            'to_understand_and_be_understood',
-            'trust',
-            'warmth'
-        ]
-    },
-    {
-        category: 'physical',
-        items: [
-            'air',
-            'food',
-            'movement',
-            'rest',
-            'sexual_expression',
-            'shelter',
+            'to_be_seen',
+            'consideration',
             'touch',
-            'water'
-        ]
-    },
-    {
-        category: 'honesty',
-        items: [
-            'authenticity',
-            'integrity',
-            'presence'
-        ]
-    },
-    {
-        category: 'play',
-        items: [
-            'joy',
-            'humor'
-        ]
-    },
-    {
-        category: 'peace',
-        items: [
-            'beauty',
-            'communion',
-            'ease',
-            'equality',
-            'harmony',
-            'inspiration',
-            'order'
+            'intimacy',
+            'belonging'
         ]
     },
     {
@@ -77,35 +32,27 @@ export const needs = [
         items: [
             'choice',
             'freedom',
-            'independence',
+            'authenticity',
+            'self_expression',
+            'integrity',
+            'clarity',
             'space',
-            'spontaneity'
+            'influence',
+            'trust'
         ]
     },
     {
         category: 'meaning',
         items: [
-            'awareness',
-            'celebration_of_life',
-            'challenge',
-            'clarity',
-            'competence',
-            'consciousness',
-            'contribution',
-            'creativity',
-            'discovery',
-            'efficacy',
-            'effectiveness',
+            'inspiration',
             'growth',
-            'hope',
-            'learning',
+            'beauty',
             'mourning',
-            'participation',
-            'purpose',
-            'self_expression',
-            'stimulation',
-            'to_matter',
-            'understanding'
+            'celebration',
+            'harmony',
+            'contribution',
+            'competence',
+            'balance'
         ]
     }
 ];

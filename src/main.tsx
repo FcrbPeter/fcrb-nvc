@@ -4,8 +4,10 @@ import App from './App'
 import './index.css'
 import './i18n/i18n';
 
+import { SplashScreen } from './components/SplashScreen';
+
 createRoot(document.getElementById('root')!).render(
-    <Suspense fallback="Loading...">
+    <Suspense fallback={<SplashScreen />}>
         <App />
     </Suspense>
 )

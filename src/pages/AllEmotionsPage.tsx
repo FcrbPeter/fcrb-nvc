@@ -13,7 +13,7 @@ function AllEmotionsPage() {
     }, []);
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-4xl pb-32 animate-in slide-in-from-bottom-5 fade-in duration-500">
+        <div className="container mx-auto px-4 py-8 max-w-4xl animate-in slide-in-from-bottom-5 fade-in duration-500">
             <h1 className="text-3xl font-bold text-center mb-8 text-primary">{t('toolbox.emotions')}</h1>
 
             <div className="space-y-12">
